@@ -25,12 +25,14 @@ SECRET_KEY = 'b9#%2rd8x#zilh_ljo_1@9543)tbj(wolh05baxn7u6i^aqgd0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ADD YOUR HOST!! #
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'adfreereview.apps.AdfreereviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
