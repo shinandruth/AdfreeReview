@@ -1,13 +1,14 @@
 <h2>Welcome</h2>
 <div>
-  <input placeholder="Username">
-  <input placeholder="Password">
+  <div>
+    <input placeholder="Username" [(ngModel)]="signin_info.username">
+    <input placeholder="Password" [(ngModel)]="signin_info.password">
+  </div>
+  <button (click)="signin()">Sign In</button>
+  <div>
+    <input placeholder="Username" [(ngModel)]="signup_info.username">
+    <input placeholder="Email" [(ngModel)]="signup_info.email">
+    <input placeholder="Password" [(ngModel)]="signup_info.password">
+  </div>
+  <button (click)="signup()">Sign Up</button>
 </div>
-<button>Sign In</button>
-<div>
-  <input placeholder="Username">
-  <input placeholder="Email">
-  <input placeholder="Password">
-</div>
-<button>Sign Up</button>
-
