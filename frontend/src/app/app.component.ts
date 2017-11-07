@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MyModel} from "./model/my-model";
-import {MyModelService} from "./model/my-model.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +7,10 @@ import {MyModelService} from "./model/my-model.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private myModelService: MyModelService) {
-  }
+  constructor(
+    private router : Router) {}
 
-  ngOnInit(): void {
-    this.myModelService.getMyModels().then(models => this.models = models);
-  }
+  ngOnInit(): void {}
 
-  title = 'app';
-
-  models: MyModel[];
+  title = 'AdfreeReview';
 }
