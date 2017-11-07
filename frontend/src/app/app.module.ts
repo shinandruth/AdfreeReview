@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
 import {HttpModule} from "@angular/http";
 import {AppRoutingModule} from "./app-routing.module";
+
+import { AppComponent } from './app.component';
 import {WelcomeComponent} from "./welcome.component";
+
+// For Testing
+import { APP_BASE_HREF } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -17,7 +21,7 @@ import {WelcomeComponent} from "./welcome.component";
     AppRoutingModule,
   ],
   providers: [
-
+    {provide: APP_BASE_HREF, useValue : '/'},
   ],
   bootstrap: [AppComponent]
 })
