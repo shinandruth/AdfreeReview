@@ -7,6 +7,9 @@ import {CookieXSRFStrategy} from "@angular/http";
 
 import { AppComponent } from './app.component';
 import {WelcomeComponent} from "./welcome.component";
+import {MainComponent} from "./main.component";
+import {MypageComponent} from "./mypage.component";
+import {RecommendComponent} from "./recommend.component";
 import {UserService} from "./model/user.service";
 
 // For Testing
@@ -15,7 +18,10 @@ import { APP_BASE_HREF } from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    MainComponent,
+    MypageComponent,
+    RecommendComponent,
   ],
   imports: [
     BrowserModule,
