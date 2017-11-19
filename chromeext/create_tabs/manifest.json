@@ -1,12 +1,12 @@
 {
-  "name": "popup that changes the page color",
-  "description": "Change the current page color",
+  "name": "popup that creates new tabs",
+  "description": "creating new tabs",
   "version": "1.0",
   "permissions": [
     "tabs", "http://*/*", "https://*/*"
   ],
   "browser_action": {
-      "default_title": "Set this page's color.",
+      "default_title": "creating new tabs",
       "default_icon": "icon.png",
       "default_popup": "popup.html"
   },
