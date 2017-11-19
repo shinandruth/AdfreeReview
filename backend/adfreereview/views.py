@@ -6,11 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
 
-import logging
 from urllib.parse import urlparse
-from IPython import embed
-
-logger = logging.getLogger(__name__)
 
 
 def myModelList(request):
@@ -67,7 +63,7 @@ def get_rating(request, adfreescore, contentscore, comment, url):
         rating.save()
         return HttpResponse(status=200)
     else:
-        return HttpResponseNotAllowed(['POST'])
+        return HttpResponseNotAllowed(['GET'])
 
 
 @ensure_csrf_cookie
