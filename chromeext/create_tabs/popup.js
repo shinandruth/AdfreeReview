@@ -9,10 +9,12 @@
 //  window.close();
 //}
 
-function create_current_tab(e){
+function send_url(e){
+  var url;
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
-    chrome.tabs.create({url: tabs[0].url});
+    url = tabs[0].url
   });
+  //TODO we should send url to django server and django server save this url to databse.
 }
 
 function create_naver(e){
@@ -21,11 +23,11 @@ function create_naver(e){
 
 document.addEventListener('DOMContentLoaded', function () {
   // alert url when click the extension button
-  chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
-    url = tabs[0].url;
-    alert(url);
-  });
+  //chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
+  //  url = tabs[0].url;
+  //  alert(url);
+  //});
 
   document.getElementById("create_tab_naver").addEventListener('click', create_naver);
-  document.getElementById("create_tab_current").addEventListener('click', create_current_tab);
+  document.getElementById("send_url").addEventListener('click', send_url);
 });
