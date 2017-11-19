@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src='scripts/jquery-1.6.1.min.js'></script>
+    <script src="scripts/parse.js"></script>
+    <script src="scripts/bg_fetch.js"></script>
+  </head>
+
+  <body>
+  </body>
+</html>
+
+function onRequest(request, sender, callback) {
+        if (request.action == 'fetch_feed') {
+         fetch_feed(request.url, callback);
+       }
+}
+
+// Wire up the listener.
+chrome.extension.onRequest.addListener(onRequest);
+
+
