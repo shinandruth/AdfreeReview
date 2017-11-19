@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .models import MyModel
+from .models import MyModel, Blog, Post, Rating
 from .models import Profile
 
 # Register your models here.
@@ -35,6 +35,21 @@ class CustomUserAdmin(UserAdmin):
         return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
 
+class CustomBlog(admin.ModelAdmin):
+    list_display = ('domain', 'title', 'url')
+
+
+class CustomRating(admin.ModelAdmin):
+    list_display = ('user', 'post', 'time_stamp', 'adfree_score', 'content_score', 'comment')
+
+
+class CustomPost(admin.ModelAdmin):
+    list_display = ('blog', 'title', 'url', 'category')
+
+
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(Blog, CustomBlog)
+admin.site.register(Post, CustomPost)
+admin.site.register(Rating, CustomRating)
