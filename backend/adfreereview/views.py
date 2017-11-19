@@ -1,11 +1,16 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
-from .models import MyModel
+from .models import MyModel, Post, Blog, Rating
+from .url_utils import check_domain, check_title, check_blog_url
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
 
-# Create your views here.
+import logging
+from urllib.parse import urlparse
+from IPython import embed
+
+logger = logging.getLogger(__name__)
 
 
 def myModelList(request):
@@ -48,6 +53,21 @@ def signout(request):
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['GET'])
+
+
+def get_rating(request, adfreescore, contentscore, comment, url):
+    if request.method == 'GET':
+        domain = check_domain(url)
+        title = check_title(url)
+        blog_url = check_blog_url(url)
+        blog, created = Blog.objects.get_or_create(domain=domain, title=title, url=blog_url)
+        post, created = Post.objects.get_or_create(blog=blog, title="DEFAULT TITLE", url=url, category="DEFAULT CATEGORY")  # FIXME get title and category
+        user = User.objects.get(username=request.user.username)
+        rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment)
+        rating.save()
+        return HttpResponse(status=200)
+    else:
+        return HttpResponseNotAllowed(['POST'])
 
 
 @ensure_csrf_cookie
