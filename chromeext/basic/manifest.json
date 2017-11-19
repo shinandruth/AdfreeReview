@@ -12,7 +12,8 @@
 	"background": {
     "page" : "background.html" },
 	"permissions": [
-	  "http://feeds.gawker.com/*"
+	  "http://feeds.gawker.com/*",
+      "tabs"
 	],
 	"browser_action": {
     "default_icon": "images/icon.png", 
