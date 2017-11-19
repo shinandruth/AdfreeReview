@@ -3,7 +3,7 @@
   "description": "sending rating infos to AdfreeReview Backend Server",
   "version": "1.0",
   "permissions": [
-    "tabs", "http://*/*", "https://*/*"
+    "tabs", "http://*/*", "https://*/*", "<all_urls>"
   ],
   "browser_action": {
       "default_title": "AdfreeReview",
