@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http} from "@angular/http";
-import {User} from "./user";
 
 import 'rxjs/add/operator/toPromise';
+
 
 @Injectable()
 export class UserService {
   private signinUrl = '/api/signin';
   private signupUrl = '/api/signup';
+  private signoutUrl = '/api/signout';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -16,7 +17,9 @@ export class UserService {
     return this.http
       .post(this.signinUrl, JSON.stringify({ username: username, password: password }))
       .toPromise()
-      .then(response => response.status as number)
+      .then(response => {
+        return response.status as number
+      })
       .catch(this.handleError);
   }
 
@@ -27,7 +30,19 @@ export class UserService {
         JSON.stringify({ username: username, email: email, password: password }),
         this.headers)
       .toPromise()
-      .then(response => response.status as number)
+      .then(response => {
+        return response.status as number
+      })
+      .catch(this.handleError);
+  }
+
+  signout() : Promise<number> {
+    return this.http
+      .get(this.signoutUrl)
+      .toPromise()
+      .then(response => {
+        return response.status as number
+      })
       .catch(this.handleError);
   }
 
