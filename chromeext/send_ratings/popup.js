@@ -8,7 +8,7 @@ function send_url(e){
 
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
-    GET_url = base_url.concat(adfreescore).concat('/'+contentscore).concat('/'+comment).concat('/'+url);
+    GET_url = base_url.concat(adfreescore).concat('/'+contentscore).concat('/'+comment).concat('/'+url+'/');
     //chrome.tabs.create({url: GET_url});
     xhr.open("GET", GET_url, false);  // FIXME localhost
     xhr.send();
