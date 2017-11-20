@@ -20,14 +20,11 @@ export class AppComponent implements OnInit {
   signout() {
     this.userService
       .signout()
-      .then(status => {
-        if (status == 200) {
-          alert("You are successfully signed out!");
-          this.router.navigate(['/main']);
-        }
-        else {
-          alert("HttpResponse: " + status);
-        }
+      .subscribe(response => {
+        alert("You are successfully signed out!");
+        this.router.navigate(['/main']);
+      }, (err) => {
+        alert("HttpResponse: " + status);
       });
   }
 }

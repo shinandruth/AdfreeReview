@@ -21,15 +21,15 @@ export class WelcomeComponent implements OnInit {
   signin() {
     this.userService
       .signin(this.signin_info.username, this.signin_info.password)
-      .then(status => {
-        if (status == 200) {
-          this.router.navigate(['/main']);
-        }
-        else if (status == 401) {
-          alert("Incorrect username or password.");
+      .subscribe(response => {
+        alert("You are successfully signed in!");
+        this.router.navigate(['/main']);
+      }, (err) => {
+        if (err === 'Unauthorized') {
+          alert('Incorrect username or password.');
         }
         else {
-          alert("HttpResponse: " + status);
+          alert("Http Response: " + err);
         }
       });
   }
@@ -37,13 +37,10 @@ export class WelcomeComponent implements OnInit {
   signup() {
     this.userService
       .signup(this.signup_info.username, this.signup_info.email, this.signup_info.password)
-      .then(status => {
-        if (status == 201) {
-          alert("You are successfully signed up!. Welcome. Please login.")
-        }
-        else {
-          alert("HttpResponse: " + status);
-        }
+      .subscribe(response => {
+        alert("You are successfully signed up! Welcome. Please login.");
+      }, (err) => {
+        alert("HttpResponse: " + status);
       });
   }
 }

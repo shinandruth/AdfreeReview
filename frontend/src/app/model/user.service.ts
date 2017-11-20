@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from "@angular/http";
+import {Headers, Http, Response} from "@angular/http";
 
-import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 
 @Injectable()
@@ -13,41 +16,44 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  signin(username: string, password: string) : Promise<number> {
+  signin(username: string, password: string) : Observable<Response> {
     return this.http
       .post(this.signinUrl, JSON.stringify({ username: username, password: password }))
-      .toPromise()
-      .then(response => {
-        return response.status as number
+      .map((response: Response) => {
+        return response;
       })
-      .catch(this.handleError);
+      .catch(err => {
+        if (err.status === 401) {
+          return Observable.throw('Unauthorized');
+        }
+        else {
+          return Observable.throw(err.status);
+        }
+      });
   }
 
-  signup(username: string, email: string, password: string) : Promise<number> {
+  signup(username: string, email: string, password: string) : Observable<Response> {
     return this.http
       .post(
         this.signupUrl,
         JSON.stringify({ username: username, email: email, password: password }),
         this.headers)
-      .toPromise()
-      .then(response => {
-        return response.status as number
+      .map((response: Response) => {
+        return response;
       })
-      .catch(this.handleError);
+      .catch(err => {
+        return Observable.throw(err.status);
+      });
   }
 
-  signout() : Promise<number> {
+  signout() : Observable<Response> {
     return this.http
       .get(this.signoutUrl)
-      .toPromise()
-      .then(response => {
-        return response.status as number
+      .map((response: Response) => {
+        return response;
       })
-      .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+      .catch(err => {
+        return Observable.throw(err.status);
+      });
   }
 }
