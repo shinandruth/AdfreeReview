@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AdfreeReview</title>
+    <style>
+    body {
+      overflow: hidden;
+      margin: 0px;
+      padding: 0px;
+      background: white;
+    }
+
+    div:first-child {
+      margin-top: 0px;
+    }
+
+    div {
+      cursor: pointer;
+      text-align: center;
+      padding: 1px 3px;
+      font-family: sans-serif;
+      font-size: 0.8em;
+      width: 100px;
+      margin-top: 1px;
+      background: #cccccc;
+    }
+    div:hover {
+      background: #aaaaaa;
+    }
+    #create_tab_naver {
+      border: 1px solid red;
+      color: red;
+    }
+    #duplicate_current_tab {
+      border: 1px solid blue;
+      color: blue;
+    }
+    </style>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="create_tab_naver">to naver</div>
+    <div id="duplicate_current_tab">duplicate current tab</div>
+    <form id = "rating" action="127.0.0.1:8000/rating" method="POST" >
+      AdfreeScore
+        <input type="text" id = "AdfreeScore" name="AdfreeScore" value="" />
+      ContentScore
+        <input type="text" id = "ContentScore" name="ContentScore" value="" />
+      Comment
+      <input type="text" id = "Comment" name="Comment" value="" />
+        <input type="submit" id = "SubmitButton"/>
+    </form>
+  </body>
+</html>
