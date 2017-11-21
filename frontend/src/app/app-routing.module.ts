@@ -7,7 +7,7 @@ import {MypageComponent} from "./mypage.component";
 import {RecommendComponent} from "./recommend.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
   { path: 'main', component: MainComponent },
   { path: 'mypage', component: MypageComponent },
