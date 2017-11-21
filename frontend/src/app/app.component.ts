@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
         alert("You are successfully signed out!");
         this.router.navigate(['/main']);
       }, (err) => {
-        alert("HttpResponse: " + status);
+        alert("HttpResponse: " + err);
       });
   }
 }
