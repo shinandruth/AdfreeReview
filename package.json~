@@ -1,0 +1,23 @@
+{
+  "name": "swpp17-team12",
+  "version": "1.0.0",
+  "description": "Welcome to AdfreeReview!",
+  "main": "index.js",
+  "dependencies": {
+    "debug": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swsnu/swpp17-team12.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swsnu/swpp17-team12/issues"
+  },
+  "homepage": "https://github.com/swsnu/swpp17-team12#readme"
+}
