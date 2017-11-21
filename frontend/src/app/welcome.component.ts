@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
 
 import {UserService} from "./model/user.service";
-import {User} from "./model/user";
 
 
 @Component({
@@ -13,8 +12,6 @@ import {User} from "./model/user";
 export class WelcomeComponent implements OnInit {
   signin_info: any = {};
   signup_info: any = {};
-  signin_response = 0;
-  signup_response = 0;
   constructor(
     private router : Router,
     private userService : UserService) {}
@@ -24,12 +21,26 @@ export class WelcomeComponent implements OnInit {
   signin() {
     this.userService
       .signin(this.signin_info.username, this.signin_info.password)
-      .then(response => this.signin_response = response);
+      .subscribe(response => {
+        alert("You are successfully signed in!");
+        this.router.navigate(['/main']);
+      }, (err) => {
+        if (err === 'Unauthorized') {
+          alert('Incorrect username or password.');
+        }
+        else {
+          alert("Http Response: " + err);
+        }
+      });
   }
 
   signup() {
     this.userService
       .signup(this.signup_info.username, this.signup_info.email, this.signup_info.password)
-      .then(response => this.signup_info = response);
+      .subscribe(response => {
+        alert("You are successfully signed up! Welcome. Please login.");
+      }, (err) => {
+        alert("HttpResponse: " + status);
+      });
   }
 }
