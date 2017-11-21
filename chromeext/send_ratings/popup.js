@@ -16,8 +16,8 @@ function send_url(e){
   window.close();
  }
 
-function create_naver(e){
-  chrome.tabs.create({url: "http://www.naver.com"});
+function sign_up(e){
+  chrome.tabs.create({url: "http://localhost:4200/welcome"});
 }
 
 function duplicate_current_tab(e){
@@ -28,7 +28,7 @@ function duplicate_current_tab(e){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById("create_tab_naver").addEventListener('click', create_naver);
+  document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
   document.getElementById("SubmitButton").addEventListener('click', send_url);
 });
