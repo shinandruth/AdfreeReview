@@ -40,7 +40,7 @@ export class WelcomeComponent implements OnInit {
       .subscribe(response => {
         alert("You are successfully signed up! Welcome. Please login.");
       }, (err) => {
-        alert("HttpResponse: " + status);
+        alert("HttpResponse: " + err);
       });
   }
 }
