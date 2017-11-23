@@ -1,7 +1,12 @@
 {
   "name": "AdfreeReview",
-  "description": "sending rating infos to AdfreeReview Backend Server",
+  "description": "Chrome Extension to help you save time when blogging.",
   "version": "1.0",
+  "icons": {
+    "16":"bar_icon-16.png",
+    "32":"bar_icon-32.png",
+    "128":"bar_icon-128.png"
+  },
   "permissions": [
     "tabs", "http://*/*", "https://*/*", "<all_urls>"
   ],
