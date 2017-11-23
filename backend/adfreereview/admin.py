@@ -22,12 +22,16 @@ class ProfileInline(admin.StackedInline):
 # Define a new User admin
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'get_score')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'get_score', 'get_domain_list')
     list_select_related = ('profile', )
 
     def get_score(self, instance):
         return instance.profile.score
     get_score.short_description = 'Score'
+
+    def get_domain_list(self, instance):
+        return instance.profile.domain_list
+    get_score.short_description = 'Domain List'
 
     def get_inline_instances(self, request, obj=None):
         if not obj:

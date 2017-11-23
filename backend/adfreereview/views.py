@@ -51,6 +51,31 @@ def signout(request):
         return HttpResponseNotAllowed(['GET'])
 
 
+# Get or Update current user (only when user is logged in)
+def current_user(request):
+    return
+
+
+# Get the list of my ratings (only when user is logged in)
+def my_ratings(request):
+    return
+
+
+# Get 3 latest posts
+def latest_posts(request):
+    return
+
+
+# Get top post list
+def top_posts(request):
+    return
+
+
+# Get top post list consists of posts in selected category
+def recommend_posts(request):
+    return
+
+
 def get_rating(request, adfreescore, contentscore, comment, url):
     if request.method == 'GET':
         domain = check_domain(url)

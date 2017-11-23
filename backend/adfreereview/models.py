@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 # Create your models here.
 
 # python3 manage.py makemigrations adfreereview
@@ -24,6 +25,7 @@ class MyModel(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+    domain_list = models.CharField(max_length=64, default='naver,daum,egloos,tistory')
 
     def __str(self):
         return self.user.username
@@ -48,6 +50,7 @@ class Post(models.Model):
     title = models.CharField(max_length=128)
     url = models.CharField(max_length=512)
     category = models.CharField(max_length=64)
+    score = models.IntegerField(default=0)
 
 
 class Rating(models.Model):
