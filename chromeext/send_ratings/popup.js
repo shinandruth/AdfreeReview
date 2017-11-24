@@ -14,7 +14,7 @@ function send_url(e){
     xhr.send();
   });
   //sleep(0.5)
-  //window.close();
+  ///window.close();
  }
 
 function sign_up(e){
