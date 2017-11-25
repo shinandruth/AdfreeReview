@@ -40,6 +40,12 @@ function sign_up(e) {
   });
 }
 
+function sign_in(e) {
+  chrome.tabs.create({
+    url: "http://localhost:4200/welcome"
+  });
+}
+
 function duplicate_current_tab(e) {
   chrome.tabs.query({
     'active': true,
@@ -81,6 +87,7 @@ function get_score() {
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("sign_up").addEventListener('click', sign_up);
+  document.getElementById("sign_in").addEventListener('click', sign_in);
   document.getElementById("SubmitButton").addEventListener('click', send_url);
   get_score()
 });
