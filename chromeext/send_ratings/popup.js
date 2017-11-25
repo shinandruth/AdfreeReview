@@ -81,7 +81,6 @@ function get_score() {
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("sign_up").addEventListener('click', sign_up);
-  document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
   document.getElementById("SubmitButton").addEventListener('click', send_url);
   get_score()
 });
