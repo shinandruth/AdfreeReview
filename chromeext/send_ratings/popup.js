@@ -50,7 +50,7 @@ function get_score(){
         scores = JSON.parse(xhr.responseText);
       }
       else if(xhr.status == "404"){
-        window.alert("No one evaluated this post yet. Please be the first one!");
+        window.alert("No one evaluate this post yet. Please be the first one!");
       }
       else{
         window.alert("Error: fail to get score of this post")
