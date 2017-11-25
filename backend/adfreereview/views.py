@@ -13,6 +13,7 @@ from django.shortcuts import get_object_or_404
 from urllib.parse import urlparse
 #from IPython import embed
 
+
 def myModelList(request):
     if request.method == 'GET':
         return JsonResponse(list(MyModel.objects.all().values()), safe=False)
