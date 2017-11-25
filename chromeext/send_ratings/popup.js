@@ -16,7 +16,6 @@ function send_url(e){
       }
     }
   };
-
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
     xhr.open("POST", base_url, true);  // FIXME localhost
@@ -38,8 +37,35 @@ function duplicate_current_tab(e){
   })
 }
 
+function get_score(){
+  var url;
+  chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
+    url = tabs[0].url;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8000/api/score/" + url, false);
+    var scores;
+    xhr.onload = function (){
+      if(xhr.readyState == 4 && xhr.status == "200"){
+        scores = JSON.parse(xhr.responseText);
+      }
+      else if(xhr.status == "404"){
+        window.alert("No one evaluate this post yet. Please be the first one!");
+      }
+      else{
+        window.alert("Error: fail to get score of this post")
+      }
+    }
+    xhr.send();
+    document.getElementById("post_adfreescore").innerHTML = scores['adfreescore'];
+    document.getElementById("post_contentscore").innerHTML = scores['contentscore'];
+    document.getElementById("numadfreerating").innerHTML = scores['numadfreerating'];
+    document.getElementById("numcontentrating").innerHTML = scores['numcontentrating'];
+
+  });
+}
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
   document.getElementById("SubmitButton").addEventListener('click', send_url);
+  get_score()
 });
