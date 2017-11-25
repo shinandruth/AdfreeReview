@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
 from .url_utils import check_domain, check_title, check_blog_url
 from django.contrib.auth.models import User
@@ -78,8 +78,14 @@ def recommend_posts(request):
     return
 
 
-def get_rating(request, adfreescore, contentscore, comment, url):
-    if request.method == 'GET':
+@csrf_exempt
+def create_rating(request):
+    if request.method == 'POST':
+        req_data = json.loads(request.body.decode())
+        adfreescore = req_data['adfreescore']
+        contentscore = req_data['contentscore']
+        comment = req_data['comment']
+        url = req_data['url']
         domain = check_domain(url)
         title = check_title(url)
         blog_url = check_blog_url(url)
@@ -90,7 +96,7 @@ def get_rating(request, adfreescore, contentscore, comment, url):
         rating.save()
         return HttpResponse(status=200)
     else:
-        return HttpResponseNotAllowed(['GET'])
+        return HttpResponseNotAllowed(['POST'])
 
 def get_scores(request, url):
     if request.method == 'GET':
