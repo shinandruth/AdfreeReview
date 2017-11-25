@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404
 
 from urllib.parse import urlparse
 
+
 def myModelList(request):
     if request.method == 'GET':
         return JsonResponse(list(MyModel.objects.all().values()), safe=False)
@@ -64,7 +65,7 @@ def my_ratings(request):
 
 # Get 3 latest posts
 def latest_posts(request):
-    if request.method == 'GET':   
+    if request.method == 'GET':
         return JsonResponse(list(Rating.objects.order_by('id').reverse()[:3].values()), safe=False)
 
 
