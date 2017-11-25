@@ -5,9 +5,11 @@ from .url_utils import check_domain, check_title, check_blog_url
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 from urllib.parse import urlparse
-
+from IPython import embed
 
 def myModelList(request):
     if request.method == 'GET':
@@ -90,6 +92,29 @@ def get_rating(request, adfreescore, contentscore, comment, url):
     else:
         return HttpResponseNotAllowed(['GET'])
 
+def get_scores(request, url):
+    if request.method == 'GET':
+        domain = check_domain(url)
+        title = check_title(url)
+        blog_url = check_blog_url(url)
+        blog = get_object_or_404(Blog, domain=domain, title=title, url=blog_url)
+        post = get_object_or_404(Post, blog=blog, url=url)
+        ratings = Rating.objects.filter(post=post)
+        if len(ratings) == 0:
+            return HttpResponse(status=404)
+        numrating = len(ratings)
+        adfree_score = sum(rating.adfree_score for rating in ratings) / numrating
+        content_score = sum(rating.content_score for rating in ratings) / numrating
+
+        scores = {
+            'adfreescore': adfree_score,
+            'contentscore': content_score,
+            'numadfreerating': numrating,
+            'numcontentrating': numrating
+        }
+        return JsonResponse(scores, status=200)
+    else:
+        return HttpResponseNotAllowed(['GET'])
 
 @ensure_csrf_cookie
 def token(request):
