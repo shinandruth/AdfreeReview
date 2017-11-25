@@ -1,4 +1,4 @@
-function send_url(e){
+function create_rating(e){
   var url;
   adfreescore = document.getElementById("AdfreeScore").value;
   contentscore = document.getElementById("ContentScore").value;
@@ -8,14 +8,13 @@ function send_url(e){
   xhr.onreadystatechange = function(e) {
     if(xhr.readyState == 4){
       if(xhr.status == 200){
-        window.alert(xhr.responseText);
+        consol.log("Success")
       }else if(xhr.status == 400){
         window.alert("Error: Please return your valid rating");
-      }else{
-        window.alert("Error!");
       }
     }
   };
+
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
     xhr.open("POST", base_url, true);  // FIXME localhost
@@ -23,7 +22,7 @@ function send_url(e){
     json_rating = JSON.stringify({adfreescore: adfreescore, contentscore: contentscore, comment:comment, url:url});
     xhr.send(json_rating);
   });
-  window.close();
+  //window.close();
  }
 
 function sign_up(e){
@@ -37,7 +36,7 @@ function duplicate_current_tab(e){
   })
 }
 
-function get_score(){
+function get_post_score(){
   var url;
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
@@ -63,9 +62,10 @@ function get_score(){
 
   });
 }
+
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
-  document.getElementById("SubmitButton").addEventListener('click', send_url);
-  get_score()
+  document.getElementById("SubmitButton").addEventListener('click', create_rating);
+  get_post_score()
 });
