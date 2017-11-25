@@ -3,18 +3,28 @@ function send_url(e){
   adfreescore = document.getElementById("AdfreeScore").value;
   contentscore = document.getElementById("ContentScore").value;
   comment = document.getElementById("Comment").value;
-  base_url = "http://localhost:8000/api/rating/"
+  base_url = "http://localhost:8000/api/rating"
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(e) {
+    if(xhr.readyState == 4){
+      if(xhr.status == 200){
+        window.alert(xhr.responseText);
+      }else if(xhr.status == 400){
+        window.alert("Error: Please return your valid rating");
+      }else{
+        window.alert("Error!");
+      }
+    }
+  };
 
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
-    var xhr = new XMLHttpRequest();
     url = tabs[0].url;
-    GET_url = base_url.concat(adfreescore).concat('/'+contentscore).concat('/'+comment).concat('/'+url+'/');
-    //chrome.tabs.create({url: GET_url});
-    xhr.open("GET", GET_url, false);  // FIXME localhost
-    xhr.send();
+    xhr.open("POST", base_url, true);  // FIXME localhost
+    xhr.setRequestHeader("Content-type", "application/json");
+    json_rating = JSON.stringify({adfreescore: adfreescore, contentscore: contentscore, comment:comment, url:url});
+    xhr.send(json_rating);
   });
-  //sleep(0.5)
-  ///window.close();
+  window.close();
  }
 
 function sign_up(e){
