@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from .views import myModelList
 from .views import signup, signin, signout
 from .views import current_user, my_ratings, latest_posts, top_posts, recommend_posts
-from .views import get_rating
+from .views import get_rating, get_scores
 from .views import token
 
 
@@ -17,5 +17,6 @@ urlpatterns = [
     url(r'^post/top$', top_posts, name='top_posts'),
     url(r'^post/top/(?P<category_id>[0-9]+)$', recommend_posts, name='recommend_posts'),
     url(r'^rating/(?P<adfreescore>\d+)/(?P<contentscore>\d+)/(?P<comment>[\w ]+)/(?P<url>http://[\w ./]+)', get_rating, name='get_rating'),
+    url(r'^score/(?P<url>http://[\w ./]+)', get_scores, name='get_scores'),
     url(r'^token$', token, name='token')
 ]
