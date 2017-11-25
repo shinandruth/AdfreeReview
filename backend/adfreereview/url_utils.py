@@ -59,6 +59,12 @@ def check_blog_url(url):
 
 def check_rating_validity(req_data):
     for component, match in rating_infos.items():
+        if req_data[component] == "":
+            continue
         if not match.match(req_data[component]):
             return (False, component)
+    if req_data['adfreescore'] == "":
+        return (False, 'adfreescore')
+    if req_data['contentscore'] == "":
+        return (False, 'contentscore')
     return (True, None)
