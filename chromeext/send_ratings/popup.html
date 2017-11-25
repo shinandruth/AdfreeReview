@@ -1,61 +1,42 @@
 <!doctype html>
-<html>
-  <head>
-    <title>AdfreeReview</title>
-    <style>
-    p{
-        text-align: center;
-    }
-    body {
-      overflow: hidden;
-      margin: 0px;
-      padding: 0px;
-      background: white;
-    }
-    div:first-child {
-      margin-top: 0px;
-    }
-    div {
-      cursor: pointer;
-      text-align: center;
-      padding: 1px 3px;
-      font-family: sans-serif;
-      font-size: 0.8em;
-      width: 100px;
-      margin-top: 1px;
-      background: #cccccc;
-    }
-    div:hover {
-      background: #aaaaaa;
-    }
-    #create_tab_naver {
-      border: 1px solid red;
-      color: red;
-    }
-    #duplicate_current_tab {
-      border: 1px solid blue;
-      color: blue;
-    }
-    </style>
-    <script src="popup.js"></script>
-  </head>
-  <body>
-    <div id="sign_up">Sign Up</div>
-    <div id="duplicate_current_tab">duplicate current tab</div>
-    <form id= "score">
-      <p><strong>[Score of this post]</strong></p>
-      <small>AdfreeScore: <span id="post_adfreescore"></span>(by <span id="numadfreerating"></span>)</small>
-      <small>ContentScore: <span id="post_contentscore"></span>(by <span id="numcontentrating"></span>)</small>
-    </form>
-    <form id = "rating">
-      <p><strong>[Rating this post!]</strong></p>
-      <small>AdfreeScore</small>
-        <input type="text" id = "AdfreeScore" name="AdfreeScore" value="" />
-      <small>ContentScore</small>
-        <input type="text" id = "ContentScore" name="ContentScore" value="" />
-      <small>Comment</small>
-      <input type="text" id = "Comment" name="Comment" value="" />
-        <input type="submit" id = "SubmitButton"/>
-    </form>
-  </body>
+<html lang="en">
+<head>
+  <title>AdfreeReview</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  <h1>Hello, world!</h1>
+
+  <div id="sign_up">Sign Up</div>
+  <form id="score">
+    <p><strong>[Score of this post]</strong></p>
+    <small>AdfreeScore: <span id="post_adfreescore"></span>(by <span id="numadfreerating"></span>)</small>
+    <small>ContentScore: <span id="post_contentscore"></span>(by <span id="numcontentrating"></span>)</small>
+  </form>
+  <form id="rating">
+    <p><strong>[Rating this post!]</strong></p>
+    <small>AdfreeScore</small>
+    <input type="text" id="AdfreeScore" name="AdfreeScore" value="" />
+    <small>ContentScore</small>
+    <input type="text" id="ContentScore" name="ContentScore" value="" />
+    <small>Comment</small>
+    <input type="text" id="Comment" name="Comment" value="" />
+    <input type="submit" id="SubmitButton" />
+  </form>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
 </html>
