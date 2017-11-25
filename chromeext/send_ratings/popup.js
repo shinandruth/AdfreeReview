@@ -16,7 +16,6 @@ function send_url(e){
       }
     }
   };
-
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
     xhr.open("POST", base_url, true);  // FIXME localhost
