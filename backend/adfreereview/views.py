@@ -9,7 +9,6 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 
 from urllib.parse import urlparse
-from IPython import embed
 
 def myModelList(request):
     if request.method == 'GET':
