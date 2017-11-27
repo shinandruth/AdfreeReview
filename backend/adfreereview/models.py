@@ -4,6 +4,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from decimal import Decimal
 
+# Create your models here.
+
 # python3 manage.py makemigrations adfreereview
 # python3 manage.py migrate
 # python3 manage.py runserver
