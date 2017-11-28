@@ -1,1 +1,17 @@
-<h2>Main page</h2>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Main page</h1>
+
+          <h2 class="sub-header">Latest Ratings</h2>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder" *ngFor="let rating of latest_ratings">
+              
+              <h4>rating id : {{rating.id}} </h4> 
+              <h4>post id : {{rating.post_id}} </h4>
+              <span class="text-muted">adfree score : {{rating.adfree_score}}</span> 
+              <span class="text-muted">content score : {{rating.content_score}}</span>
+              <span class="text-muted">comment : {{rating.comment}}</span>
+              <span class="text-muted">time stamp : {{rating.time_stamp}}</span>
+            </div>
+          </div>
+</div>
