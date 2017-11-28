@@ -7,14 +7,14 @@ import { Rating } from './rating';
 
 @Injectable()
 export class RatingService {
-  private mainUrl = '/api/main'; 
+  private latestUrl = '/api/post/latest'; 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
 
   get_latest_ratings(): Promise<Rating[]> {
 
-	return this.http.get(this.mainUrl)
+	return this.http.get(this.latestUrl)
 				.toPromise()
 				.then(response => response.json() as Rating[])
 				.catch(this.handleError);
