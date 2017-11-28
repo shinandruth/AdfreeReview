@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
-from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity
+from .utils import check_domain, check_title, check_blog_url, check_rating_validity, update_scores
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
@@ -86,8 +86,8 @@ def create_rating(request):
         valid, component = check_rating_validity(req_data)
         if not valid:
             return HttpResponse(status=400)  # FIXME passing error
-        adfreescore = req_data['adfreescore']
-        contentscore = req_data['contentscore']
+        adfreescore = float(req_data['adfreescore'])
+        contentscore = float(req_data['contentscore'])
         comment = req_data['comment']
         url = req_data['url']
         domain = check_domain(url)
@@ -98,6 +98,7 @@ def create_rating(request):
         user = User.objects.get(username=request.user.username)
         rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment)
         rating.save()
+        update_scores(rating)
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['POST'])
