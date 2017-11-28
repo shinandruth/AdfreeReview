@@ -111,8 +111,8 @@ def get_scores(request, url):
         if len(ratings) == 0:
             return HttpResponse(status=404)
         numrating = len(ratings)
-        adfree_score = sum(rating.adfree_score for rating in ratings) / numrating
-        content_score = sum(rating.content_score for rating in ratings) / numrating
+        adfree_score = round(sum(rating.adfree_score for rating in ratings) / numrating, 2)
+        content_score = round(sum(rating.content_score for rating in ratings) / numrating, 2)
 
         scores = {
             'adfreescore': adfree_score,
