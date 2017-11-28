@@ -8,6 +8,17 @@ blog_urls = {
     'tistory': re.compile('\w+[.]tistory[.]com$')
 }
 
+rating_infos = {
+    # 0.0 - 5.0
+    'adfreescore': re.compile('^(0(\.\d+)?|1(\.\d+)?|2(\.\d+)?|3(\.\d+)?|4(\.\d+)?|5(\.0+)?)$'),
+    # 0.0 - 5.0
+    'contentscore': re.compile('^(0(\.\d+)?|1(\.\d+)?|2(\.\d+)?|3(\.\d+)?|4(\.\d+)?|5(\.0+)?)$'),
+    # string include `~!@#$%^&*()-=_+][{}:"'>,>.?/
+    'comment':  re.compile('^[ \w~`!@#$%^&*\(\)-=_+\[\]\\\|\"\'\:\.\,><?\/]+$'),
+    # url starting with http
+    'url': re.compile('^http://[\w ./]+$')
+}
+
 
 def check_domain(url):
     parsed_url = urlparse(url)
@@ -45,3 +56,9 @@ def check_blog_url(url):
         return "http://{}.tistory.com".format(title)
     else:
         return None
+
+def check_rating_validity(req_data):
+    for component, match in rating_infos.items():
+        if not match.match(req_data[component]):
+            return (False, component)
+    return (True, None)

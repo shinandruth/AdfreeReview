@@ -3,17 +3,18 @@
   <head>
     <title>AdfreeReview</title>
     <style>
+    p{
+        text-align: center;
+    }
     body {
       overflow: hidden;
       margin: 0px;
       padding: 0px;
       background: white;
     }
-
     div:first-child {
       margin-top: 0px;
     }
-
     div {
       cursor: pointer;
       text-align: center;
@@ -41,12 +42,18 @@
   <body>
     <div id="sign_up">Sign Up</div>
     <div id="duplicate_current_tab">duplicate current tab</div>
-    <form id = "rating" action="127.0.0.1:8000/rating" method="POST" >
-      AdfreeScore
+    <form id= "score">
+      <p><strong>[Score of this post]</strong></p>
+      <small>AdfreeScore: <span id="post_adfreescore"></span>(by <span id="numadfreerating"></span>)</small>
+      <small>ContentScore: <span id="post_contentscore"></span>(by <span id="numcontentrating"></span>)</small>
+    </form>
+    <form id = "rating">
+      <p><strong>[Rating this post!]</strong></p>
+      <small>AdfreeScore</small>
         <input type="text" id = "AdfreeScore" name="AdfreeScore" value="" />
-      ContentScore
+      <small>ContentScore</small>
         <input type="text" id = "ContentScore" name="ContentScore" value="" />
-      Comment
+      <small>Comment</small>
       <input type="text" id = "Comment" name="Comment" value="" />
         <input type="submit" id = "SubmitButton"/>
     </form>

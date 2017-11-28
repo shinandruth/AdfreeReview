@@ -1,13 +1,14 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
-from .url_utils import check_domain, check_title, check_blog_url
+from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 from urllib.parse import urlparse
-
 
 def myModelList(request):
     if request.method == 'GET':
@@ -76,8 +77,17 @@ def recommend_posts(request):
     return
 
 
-def get_rating(request, adfreescore, contentscore, comment, url):
-    if request.method == 'GET':
+@csrf_exempt
+def create_rating(request):
+    if request.method == 'POST':
+        req_data = json.loads(request.body.decode())
+        valid, component = check_rating_validity(req_data)
+        if not valid:
+            return HttpResponse(status=400)  # FIXME passing error
+        adfreescore = req_data['adfreescore']
+        contentscore = req_data['contentscore']
+        comment = req_data['comment']
+        url = req_data['url']
         domain = check_domain(url)
         title = check_title(url)
         blog_url = check_blog_url(url)
@@ -88,8 +98,31 @@ def get_rating(request, adfreescore, contentscore, comment, url):
         rating.save()
         return HttpResponse(status=200)
     else:
-        return HttpResponseNotAllowed(['GET'])
+        return HttpResponseNotAllowed(['POST'])
 
+def get_scores(request, url):
+    if request.method == 'GET':
+        domain = check_domain(url)
+        title = check_title(url)
+        blog_url = check_blog_url(url)
+        blog = get_object_or_404(Blog, domain=domain, title=title, url=blog_url)
+        post = get_object_or_404(Post, blog=blog, url=url)
+        ratings = Rating.objects.filter(post=post)
+        if len(ratings) == 0:
+            return HttpResponse(status=404)
+        numrating = len(ratings)
+        adfree_score = sum(rating.adfree_score for rating in ratings) / numrating
+        content_score = sum(rating.content_score for rating in ratings) / numrating
+
+        scores = {
+            'adfreescore': adfree_score,
+            'contentscore': content_score,
+            'numadfreerating': numrating,
+            'numcontentrating': numrating
+        }
+        return JsonResponse(scores, status=200)
+    else:
+        return HttpResponseNotAllowed(['GET'])
 
 @ensure_csrf_cookie
 def token(request):

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from decimal import Decimal
 
 
 # Create your models here.
@@ -50,7 +51,10 @@ class Post(models.Model):
     title = models.CharField(max_length=128)
     url = models.CharField(max_length=512)
     category = models.CharField(max_length=64)
-    score = models.IntegerField(default=0)
+    adfree_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    content_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    total_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    rating_count = models.IntegerField(default=0)
 
 
 class Rating(models.Model):
