@@ -64,7 +64,8 @@ def my_ratings(request):
 
 # Get 3 latest posts
 def latest_posts(request):
-    return
+    if request.method == 'GET':   
+        return JsonResponse(list(Rating.objects.order_by('id').reverse()[:3].values()), safe=False)
 
 
 # Get top post list
