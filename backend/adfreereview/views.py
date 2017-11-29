@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
-from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity
+from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity, get_post_title
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
@@ -94,7 +94,8 @@ def create_rating(request):
         title = check_title(url)
         blog_url = check_blog_url(url)
         blog, created = Blog.objects.get_or_create(domain=domain, title=title, url=blog_url)
-        post, created = Post.objects.get_or_create(blog=blog, title="DEFAULT TITLE", url=url, category="DEFAULT CATEGORY")  # FIXME get title and category
+        post_title = get_post_title(blogId=title)
+        post, created = Post.objects.get_or_create(blog=blog, title=post_title, url=url, category="DEFAULT CATEGORY")  # FIXME get category
         user = User.objects.get(username=request.user.username)
         rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment)
         rating.save()
