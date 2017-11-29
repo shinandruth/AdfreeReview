@@ -1,5 +1,10 @@
 import re
 from urllib.parse import urlparse, parse_qs
+import os
+import sys
+import urllib.request
+import json
+from .config import API
 
 blog_urls = {
     'naver': re.compile('blog.naver.com$'),
@@ -68,3 +73,20 @@ def check_rating_validity(req_data):
     if req_data['contentscore'] == "":
         return (False, 'contentscore')
     return (True, None)
+
+def get_post_title(blogId):
+    client_id = API['naver'][0]
+    client_secret = API['naver'][1]
+    encText = urllib.parse.quote(blogId)
+    url = 'https://openapi.naver.com/v1/search/blog?query=' + encText
+    request = urllib.request.Request(url)
+    request.add_header("X-Naver-Client-Id", client_id)
+    request.add_header("X-Naver-Client-Secret", client_secret)
+    response = urllib.request.urlopen(request)
+    rescode = response.getcode()
+    if(rescode == 200):
+        response_body = response.read()
+        posts = json.loads(response_body.decode('utf-8'))
+        return posts['items'][0]['title']
+    else:
+        return None
