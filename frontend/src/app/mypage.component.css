@@ -1,0 +1,50 @@
+img {
+  height: 50%;
+  width: 50%;
+  margin: 20px;
+}
+
+.info {
+  height: auto;
+  padding: 0px;
+  margin: 0px 20px 0px 20px;
+}
+
+.panel {
+  padding: 20px 10px 20px 10px;
+  margin: 20px;
+}
+
+.cell {
+  padding: 5px;
+  margin: 5px;
+}
+
+.inner {
+  display: inline-block;
+}
+
+.left-panel {
+
+}
+.right-panel {
+  width: 300px;
+}
+
+.domain {
+  width: 80px;
+}
+
+.my-ratings {
+  text-align: left;
+}
+
+.my-info {
+  text-align: center;
+  height: auto;
+}
+
+.setting {
+  text-align: center;
+  height: auto;
+}
