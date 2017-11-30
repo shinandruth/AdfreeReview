@@ -5,9 +5,7 @@
   <title>AdfreeReview</title>
   <script src="popup.js"></script>
   <link rel="stylesheet" href="popup.css">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -20,6 +18,9 @@
     <small>AdfreeScore: <span id="post_adfreescore"></span>(by <span id="numadfreerating"></span>)</small>
     <small>ContentScore: <span id="post_contentscore"></span>(by <span id="numcontentrating"></span>)</small>
   </form>
+
+  <fieldset class="starability-fade">
+
   <form id="rating">
     <p><strong>[Rating this post!]</strong></p>
     <small>AdfreeScore</small>
@@ -30,6 +31,34 @@
     <input type="text" id="Comment" name="Comment" value="" />
     <input type="submit" id="SubmitButton" />
   </form>
+<div>
+  <form>
+      <!-- Change starability-basic to different class to see animations. -->
+      <fieldset class="starability-basic">
+        <h5>Adfree Rating</h5>
+        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+
+        <input type="radio" id="rate1" name="rating" value="1" />
+        <label for="rate1">1 star.</label>
+
+        <input type="radio" id="rate2" name="rating" value="2" />
+        <label for="rate2">2 stars.</label>
+
+        <input type="radio" id="rate3" name="rating" value="3" />
+        <label for="rate3">3 stars.</label>
+
+        <input type="radio" id="rate4" name="rating" value="4" />
+        <label for="rate4">4 stars.</label>
+
+        <input type="radio" id="rate5" name="rating" value="5" />
+        <label for="rate5">5 stars.</label>
+
+        <span class="starability-focus-ring"></span>
+      </fieldset>
+    </form>
+
+  </div>
+
   <div class="wrapper">
     <button id="sign_in" type="button" class="btn btn-default navbar-btn">Sign in</button>
     <button id="sign_up" type="button" class="btn btn-default navbar-btn">Sign Up</button>
