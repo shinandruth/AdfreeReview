@@ -36,6 +36,12 @@ function sign_up(e) {
   });
 }
 
+function sign_in(e) {
+  chrome.tabs.create({
+    url: "http://localhost:4200/welcome"
+  });
+}
+
 function duplicate_current_tab(e) {
   chrome.tabs.query({
     'active': true,
@@ -78,7 +84,7 @@ function get_post_score(){
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("sign_up").addEventListener('click', sign_up);
-  //document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
+  document.getElementById("sign_in").addEventListener('click', sign_in);
   document.getElementById("SubmitButton").addEventListener('click', create_rating);
   get_post_score()
 });
