@@ -1,3 +1,22 @@
+{% load static %}
+<html>
+...
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+...
+</html>
+
+{% load ratings %}
+<html>
+...
+{% ratings object %}
+...
+</html>
+
+
+
+
+
 function create_rating(e){
   var url;
   adfreescore = document.getElementById("AdfreeScore").value;
@@ -68,7 +87,7 @@ function get_post_score(){
       if (xhr.readyState == 4 && xhr.status == "200") {
         scores = JSON.parse(xhr.responseText);
       } else if (xhr.status == "404") {
-        window.alert("No one evaluate this post yet. Please be the first one!");
+        //window.alert("No one evaluate this post yet. Please be the first one!");
       } else {
         window.alert("Error: fail to get score of this post")
       }
@@ -83,8 +102,8 @@ function get_post_score(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById("SubmitButton").addEventListener('click', create_rating);
   document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("sign_in").addEventListener('click', sign_in);
-  document.getElementById("SubmitButton").addEventListener('click', create_rating);
   get_post_score()
 });

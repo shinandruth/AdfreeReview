@@ -18,5 +18,7 @@ urlpatterns = [
     url(r'^post/top/(?P<category_id>[0-9]+)$', recommend_posts, name='recommend_posts'),
     url(r'^rating$', create_rating, name='create_rating'),
     url(r'^score/(?P<url>http://[\w ./]+)', get_scores, name='get_scores'),
-    url(r'^token$', token, name='token')
+    url(r'^token$', token, name='token'),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings'))
+
 ]

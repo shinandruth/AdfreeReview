@@ -2,9 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-
-# Create your models here.
+from decimal import Decimal
 
 # python3 manage.py makemigrations adfreereview
 # python3 manage.py migrate
@@ -45,12 +43,22 @@ class Blog(models.Model):
     # category = models.CharField(max_length=64)
 
 
+#class Post(models.Model):
+#    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+#    title = models.CharField(max_length=128)
+#    url = models.CharField(max_length=512)
+#    category = models.CharField(max_length=64)
+#    score = models.IntegerField(default=0)
+
 class Post(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     title = models.CharField(max_length=128)
     url = models.CharField(max_length=512)
     category = models.CharField(max_length=64)
-    score = models.IntegerField(default=0)
+    adfree_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    content_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    total_score = models.DecimalField(max_digits=5, decimal_places=2, default=Decimal('0.00'))
+    rating_count = models.IntegerField(default=0)
 
 
 class Rating(models.Model):

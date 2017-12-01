@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="popup.css">
   <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
 
+  <!-- django star implementation -->
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -32,6 +36,9 @@
     <input type="submit" id="SubmitButton" />
   </form>
 <div>
+
+
+
   <form>
       <!-- Change starability-basic to different class to see animations. -->
       <fieldset class="starability-basic">
