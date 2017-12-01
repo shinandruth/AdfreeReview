@@ -73,4 +73,15 @@ export class UserService {
         }
       });
   }
+
+  updateSetting(new_setting) : Observable<Response> {
+    return this.http
+      .put(this.userUrl, JSON.stringify({domain_list: new_setting}), {headers: this.headers})
+      .map((response: Response) => {
+        return response;
+      })
+      .catch(err => {
+        return Observable.throw(err.status);
+      });
+  }
 }

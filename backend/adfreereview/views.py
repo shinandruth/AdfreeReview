@@ -66,6 +66,16 @@ def current_user(request):
             return JsonResponse(user_and_profile, safe=False)
         else:
             return HttpResponse(status=401)
+    elif request.method == 'PUT':
+        req_data = json.loads(request.body.decode())
+        domain_list = req_data['domain_list']
+        if request.user.is_authenticated:
+            profile = Profile.objects.get(user=request.user)
+            profile.domain_list = domain_list
+            profile.save()
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse(status=401)
     else:
         return HttpResponseNotAllowed(['GET'])
 
