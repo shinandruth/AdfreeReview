@@ -2,8 +2,10 @@
   <!-- Content here -->
   <div class="row">
     <div class="col-md-8">
-      <div class="border rounded left-panel panel my-ratings">
-        <h4>My Ratings</h4>
+      <div class="col-md-12 border rounded left-panel panel my-ratings">
+        <div class="row info">
+          <h3>My Ratings</h3>
+        </div>
       </div>
     </div>
     <div class="col-md-4">
@@ -13,7 +15,7 @@
             <h3>Hello, {{my_info.username}}!</h3>
           </div>
           <div>
-            <img src="assets/images/heart-1.png">
+            <img src={{profile}}>
           </div>
           <div class="row inner">
             <h3>{{my_info.score}}pt</h3>
@@ -25,16 +27,25 @@
           <h3>Settings</h3>
         </div>
         <div class="row rounded right-panel info">
-          <div *ngIf="my_info.domain_list" class="col-md-4">
-            <div *ngFor="let d of all_domain_list" class="row cell">
-                {{d}}
+          <div class="col-md-4">
+            <div *ngFor="let i of index_list" class="row cell">
+              {{domains[i].toUpperCase()}}
             </div>
           </div>
-          <div *ngIf="my_info.domain_list" class="col-md-8">
-            <div *ngFor="let domain of my_domain_list" class="row cell">
-              {{isDomain(domain)}}
+          <div class="col-md-8">
+            <div *ngFor="let i of index_list" class="row cell">
+              <div class="word">off</div>
+              <!-- Rounded switch -->
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]=setting[i]>
+                <span class="slider round"></span>
+              </label>
+              <div class="word">on</div>
             </div>
           </div>
+        </div>
+        <div class="row info">
+          <button (click)="updateSetting()">Save Setting</button>
         </div>
       </div>
     </div>
