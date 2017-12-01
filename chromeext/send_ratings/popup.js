@@ -78,7 +78,7 @@ function get_post_score(){
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("sign_up").addEventListener('click', sign_up);
-  document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
+  //document.getElementById("duplicate_current_tab").addEventListener('click', duplicate_current_tab);
   document.getElementById("SubmitButton").addEventListener('click', create_rating);
   get_post_score()
 });
