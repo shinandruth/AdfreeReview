@@ -84,12 +84,19 @@ def current_user(request):
         else:
             return HttpResponse(status=401)
     else:
-        return HttpResponseNotAllowed(['GET'])
+        return HttpResponseNotAllowed(['GET', 'PUT'])
 
 
 # Get the list of my ratings (only when user is logged in)
 def my_ratings(request):
-    return
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return JsonResponse(
+                list(Rating.objects.filter(user=request.user).order_by('-time_stamp').values()), safe=False)
+        else:
+            return HttpResponse(status=401)
+    else:
+        return HttpResponseNotAllowed(['GET'])
 
 
 # Get 3 latest posts

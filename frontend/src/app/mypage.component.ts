@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 
 import {UserService} from "./model/user.service";
 import {User} from "./model/user";
+import {RatingService} from "./rating.service";
+import {Rating} from "./rating";
 
 @Component({
   selector: 'mypage',
@@ -16,13 +18,16 @@ export class MypageComponent implements OnInit {
   domains = ['naver', 'daum', 'egloos', 'tistory'];   // all domains where user can choose to use the service
   setting = [];
   profile = "";
+  my_ratings : Rating[];
 
   constructor(
     private router : Router,
-    private userService : UserService) {}
+    private userService : UserService,
+    private ratingService : RatingService) {}
 
   ngOnInit(): void {
     this.getMyInfo();
+    this.getMyRatings();
   }
 
   getMyInfo() {
@@ -78,5 +83,14 @@ export class MypageComponent implements OnInit {
     else {
       this.profile = "assets/images/heart-3.png"
     }
+  }
+
+  getMyRatings() {
+    this.ratingService
+      .getMyRatings()
+      .then(my_ratings => {
+        this.my_ratings = my_ratings;
+        console.log("hello!");
+      });
   }
 }
