@@ -9,7 +9,13 @@ button {
   width: 260px;
 }
 
+footer {
+  padding: 20px 40px 20px 40px;
+  margin: 40px 10px 40px 10px;
+}
+
 .container {
+  height: 100vh;
   margin-top: 50px;
   min-width: 900px;
 }
