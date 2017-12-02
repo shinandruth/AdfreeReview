@@ -10,6 +10,7 @@ matrix:
         - pip install django coverage coveralls
       before_script:
         - cd backend
+        - pip install django-star-ratings
         - python3 manage.py migrate
       script:
         - coverage run --branch --source="./example" manage.py test
