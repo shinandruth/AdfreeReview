@@ -4,6 +4,10 @@ img {
   margin: 20px;
 }
 
+.container {
+  min-width: 900px;
+}
+
 .info {
   height: auto;
   padding: 0px;
@@ -15,14 +19,25 @@ img {
   margin: 20px;
 }
 
-.cell {
+.cell-setting {
   height: 40px;
   padding: 5px 0px 5px 0px;
   margin: 5px;
+  text-align: center;
 }
 
 .word {
   margin: 0px 10px 0px 10px;
+}
+
+.rating {
+  padding: 5px 0px 5px 0px;
+  margin: 5px;
+}
+
+.cell-rating {
+  margin: 5px 0px 5px 0px;
+  text-align: center;
 }
 
 .inner {
@@ -30,8 +45,8 @@ img {
 }
 
 .left-panel {
-  width: auto;
 }
+
 .right-panel {
   width: 320px;
 }
