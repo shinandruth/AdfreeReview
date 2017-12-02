@@ -42,14 +42,6 @@ class Blog(models.Model):
     url = models.CharField(max_length=512)
     # category = models.CharField(max_length=64)
 
-
-#class Post(models.Model):
-#    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-#    title = models.CharField(max_length=128)
-#    url = models.CharField(max_length=512)
-#    category = models.CharField(max_length=64)
-#    score = models.IntegerField(default=0)
-
 class Post(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     title = models.CharField(max_length=128)

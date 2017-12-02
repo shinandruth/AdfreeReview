@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 import json
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from django.utils import simplejson
+#from django.utils import simplejson
 
 
 from urllib.parse import urlparse
