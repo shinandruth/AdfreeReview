@@ -4,7 +4,13 @@ img {
   margin: 20px;
 }
 
+button {
+  margin-top: 20px;
+  width: 260px;
+}
+
 .container {
+  margin-top: 50px;
   min-width: 900px;
 }
 
