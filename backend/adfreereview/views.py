@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 import json
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.utils import simplejson
+
 
 from urllib.parse import urlparse
 #from IPython import embed
@@ -51,6 +53,10 @@ def signout(request):
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['GET'])
+
+def send_rating(request):
+    js_data = Post.objects.all()
+    return render(request, 'blog/post_list.html', {})
 
 
 # Get or Update current user (only when user is logged in)
