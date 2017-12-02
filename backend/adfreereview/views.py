@@ -54,9 +54,9 @@ def signout(request):
     else:
         return HttpResponseNotAllowed(['GET'])
 
-def send_rating(request):
-    js_data = Post.objects.all()
-    return render(request, 'blog/post_list.html', {})
+#def send_rating(request):
+#    js_data = Post.objects.all()
+#    return render(request, 'blog/post_list.html', {})
 
 
 # Get or Update current user (only when user is logged in)
