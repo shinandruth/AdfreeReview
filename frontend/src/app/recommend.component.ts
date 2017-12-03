@@ -20,7 +20,6 @@ export class RecommendComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.get_top_posts();
-
 	}
 
 	posts: Post[];
@@ -33,10 +32,10 @@ export class RecommendComponent implements OnInit {
 			this.postService.get_recommended_posts(category)
         		.then(posts => this.posts = posts);	
 		}
-		
 	}
 
 	get_top_posts(): void{
 		this.postService.get_top_posts().then(top_posts => this.posts = top_posts);
 	}
+	
 }		

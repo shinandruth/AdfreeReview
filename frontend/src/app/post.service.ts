@@ -21,9 +21,6 @@ export class PostService {
 
   get_recommended_posts(category_id: string): Promise<Post[]> {
   	const recUrl = `/api/post/top/${category_id}`;
-  	this.http.get(recUrl)
-		.toPromise()
-		.then(response => console.log(response.json()));
   	return this.http.get(recUrl)
 		.toPromise()
 		.then(response => response.json() as Post[])
