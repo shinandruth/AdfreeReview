@@ -26,7 +26,6 @@ export class MainComponent implements OnInit{
 		this.get_top_posts();
 	}
 	
-
 	latest_ratings: Rating[];
 	top_posts: Post[];
 
