@@ -35,7 +35,6 @@ export class MainComponent implements OnInit{
 	}
 
 	get_top_posts(): void{
-		this.postService.get_top_posts().then(response => console.log(response));
 		this.postService.get_top_posts().then(top_posts => this.top_posts = top_posts);
 	}
 

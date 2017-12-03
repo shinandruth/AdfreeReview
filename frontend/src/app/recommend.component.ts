@@ -19,14 +19,24 @@ export class RecommendComponent implements OnInit {
     		private userService: UserService) { }
 
 	ngOnInit(): void {
-		
-		this.postService.get_recommended_posts('DEFAULT CATEGORY')
-        	.then(posts => this.posts = posts);
+		this.get_top_posts();
 
 	}
 
 	posts: Post[];
 
-	
+	onSelect(): void{
+		var category = (<HTMLInputElement>document.getElementById("selectCategory")).value;
+		if(category == "All"){
+			this.get_top_posts();
+		}else{
+			this.postService.get_recommended_posts(category)
+        		.then(posts => this.posts = posts);	
+		}
+		
+	}
 
-}	
+	get_top_posts(): void{
+		this.postService.get_top_posts().then(top_posts => this.posts = top_posts);
+	}
+}		
