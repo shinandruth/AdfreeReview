@@ -48,7 +48,7 @@ class CustomRating(admin.ModelAdmin):
 
 
 class CustomPost(admin.ModelAdmin):
-    list_display = ('blog', 'title', 'url', 'category')
+    list_display = ('blog', 'title', 'url', 'category', 'adfree_score', 'content_score', 'total_score', 'rating_count')
 
 
 # Re-register UserAdmin

@@ -1,5 +1,6 @@
 export class User {
-  username: string;
-  email: string;
-  password: string;
+  constructor(
+    public username: string,
+    public score: number,
+    public domain_list: string) {}
 }

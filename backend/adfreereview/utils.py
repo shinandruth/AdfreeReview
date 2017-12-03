@@ -1,5 +1,9 @@
 import re
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse
+
+
+############################################ URL urils ############################################
+
 
 blog_urls = {
     'naver': re.compile('blog.naver.com$'),
@@ -57,14 +61,42 @@ def check_blog_url(url):
     else:
         return None
 
+
+######################################### Rating urils ############################################
+
+
 def check_rating_validity(req_data):
     for component, match in rating_infos.items():
-        if req_data[component] == "":
-            continue
         if not match.match(req_data[component]):
             return (False, component)
-    if req_data['adfreescore'] == "":
-        return (False, 'adfreescore')
-    if req_data['contentscore'] == "":
-        return (False, 'contentscore')
     return (True, None)
+
+
+########################################## Score urils ############################################
+
+
+score_portion = {'adfree': 0.5, 'content': 0.5}
+
+
+def update_scores(rating):
+    post = rating.post
+    if post.rating_count == 0:
+        new_rating_count = 1
+        new_adfree_score = float(rating.adfree_score)
+        new_content_score = float(rating.content_score)
+        new_total_score = new_adfree_score * score_portion['adfree'] + new_content_score * score_portion['content']
+    else:
+        old_adfree_score = float(post.adfree_score)
+        old_content_score = float(post.content_score)
+        old_rating_count = float(post.rating_count)
+
+        new_adfree_score = (old_adfree_score * old_rating_count + float(rating.adfree_score)) / (old_rating_count + 1)
+        new_content_score = (old_content_score * old_rating_count + float(rating.content_score)) / (old_rating_count + 1)
+        new_total_score = new_adfree_score * score_portion['adfree'] + new_content_score * score_portion['content']
+        new_rating_count = old_rating_count + 1
+
+    post.adfree_score = new_adfree_score
+    post.content_score = new_content_score
+    post.total_score = new_total_score
+    post.rating_count = new_rating_count
+    post.save()
