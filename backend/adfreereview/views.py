@@ -71,12 +71,16 @@ def latest_posts(request):
 
 # Get top post list
 def top_posts(request):
-    return
+    if request.method == 'GET':
+        return JsonResponse(list(Post.objects.order_by('total_score').values()), safe=False)
+
 
 
 # Get top post list consists of posts in selected category
-def recommend_posts(request):
-    return
+def recommend_posts(request, category_id):
+    if request.method == 'GET':
+        #return JsonResponse(list(Post.objects.order_by('total_score').values()), safe=False)
+        return JsonResponse(list(Post.objects.filter(category = category_id).values()), safe=False)
 
 
 @csrf_exempt
