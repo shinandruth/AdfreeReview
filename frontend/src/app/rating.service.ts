@@ -15,7 +15,7 @@ export class RatingService {
 
   get_latest_ratings(): Promise<Rating[]> {
 
-	return this.http.get(this.latestUrl)
+	  return this.http.get(this.latestUrl)
 				.toPromise()
 				.then(response => response.json() as Rating[])
 				.catch(this.handleError);
