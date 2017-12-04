@@ -7,8 +7,11 @@ from django.contrib.auth import authenticate, login, logout
 import json
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+#from django.utils import simplejson
+
 
 from urllib.parse import urlparse
+#from IPython import embed
 
 def myModelList(request):
     if request.method == 'GET':
@@ -51,6 +54,10 @@ def signout(request):
     else:
         return HttpResponseNotAllowed(['GET'])
 
+#def send_rating(request):
+#    js_data = Post.objects.all()
+#    return render(request, 'blog/post_list.html', {})
+
 
 # Get or Update current user (only when user is logged in)
 def current_user(request):
@@ -64,7 +71,8 @@ def my_ratings(request):
 
 # Get 3 latest posts
 def latest_posts(request):
-    return
+    if request.method == 'GET':
+        return JsonResponse(list(Rating.objects.order_by('id').reverse()[:3].values()), safe=False)
 
 
 # Get top post list
