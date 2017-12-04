@@ -94,7 +94,7 @@ def latest_posts(request):
 # Get top post list
 def top_posts(request):
     if request.method == 'GET':
-        return JsonResponse(list(Post.objects.order_by('total_score').values()), safe=False)
+        return JsonResponse(list(Post.objects.order_by('total_score').reverse().values()), safe=False)
 
 
 
