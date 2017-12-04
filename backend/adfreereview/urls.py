@@ -19,6 +19,6 @@ urlpatterns = [
     url(r'^rating$', create_rating, name='create_rating'),
     url(r'^score/(?P<url>http://[\w ./]+)', get_scores, name='get_scores'),
     url(r'^token$', token, name='token'),
-    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings'))
+#    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings'))
 
 ]

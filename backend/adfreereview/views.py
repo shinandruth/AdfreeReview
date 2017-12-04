@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
-from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity
+from .utils import check_domain, check_title, check_blog_url, check_rating_validity, update_scores
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
@@ -71,7 +71,8 @@ def my_ratings(request):
 
 # Get 3 latest posts
 def latest_posts(request):
-    return
+    if request.method == 'GET':
+        return JsonResponse(list(Rating.objects.order_by('id').reverse()[:3].values()), safe=False)
 
 
 # Get top post list
@@ -103,6 +104,7 @@ def create_rating(request):
         user = User.objects.get(username=request.user.username)
         rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment)
         rating.save()
+        update_scores(rating)
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['POST'])
