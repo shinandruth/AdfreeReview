@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 from .models import MyModel, Post, Blog, Rating
-from .utils import check_domain, check_title, check_blog_url, check_rating_validity
+from .url_utils import check_domain, check_title, check_blog_url, check_rating_validity
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import json
