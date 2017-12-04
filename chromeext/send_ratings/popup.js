@@ -1,11 +1,11 @@
 function create_rating(e){
   var url;
-  adfreescore = document.getElementById("AdfreeScore").value;
-  contentscore = document.getElementById("ContentScore").value;
+  adfreescore = get_starrate(document.getElementById("adfree_starrate"));
+  contentscore = get_starrate(document.getElementById("content_starrate"));
   comment = document.getElementById("Comment").value;
   base_url = "http://localhost:8000/api/rating"
   var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(e) {
+  xhr.onreadystatechange = function(e){
     if(xhr.readyState == 4){
       if(xhr.status == 200){
         consol.log("Success")
@@ -14,7 +14,6 @@ function create_rating(e){
       }
     }
   };
-
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
     xhr.open("POST", base_url, true); // FIXME localhost
@@ -28,7 +27,18 @@ function create_rating(e){
     xhr.send(json_rating);
   });
   //window.close();
- }
+}
+
+function get_starrate(star_class){
+  var obj = star_class.getElementsByTagName("input");
+  var checked_value = '';
+  for (i = 0 ; i < obj.length ; i++){
+    if(obj[i].checked == true){
+      checked_value = obj[i].value;
+    }
+  }
+  return checked_value
+}
 
 function sign_up(e) {
   chrome.tabs.create({
@@ -86,5 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("SubmitButton").addEventListener('click', create_rating);
   document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("sign_in").addEventListener('click', sign_in);
+  document.getElementById("rate1").addEventListener('click', duplicate_current_tab);
   get_post_score()
 });
