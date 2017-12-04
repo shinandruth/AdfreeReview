@@ -104,7 +104,6 @@ def create_rating(request):
         user = User.objects.get(username=request.user.username)
         rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment)
         rating.save()
-        update_scores(rating)
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['POST'])
