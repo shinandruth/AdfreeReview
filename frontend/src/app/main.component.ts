@@ -14,7 +14,7 @@ import {RatingService} from "./rating.service";
   styleUrls: ['./main.component.css'],
 })
 
-export class MainComponent {
+export class MainComponent implements OnInit{
 	constructor(
 		private router: Router,
     		private postService: PostService,
@@ -23,14 +23,18 @@ export class MainComponent {
 
 	ngOnInit(): void{
 		this.get_latest_ratings();
+		this.get_top_posts();
 	}
 	
-
 	latest_ratings: Rating[];
+	top_posts: Post[];
 
 	get_latest_ratings(): void{
 		this.ratingService.get_latest_ratings().then(latest_ratings => this.latest_ratings = latest_ratings);
 	}
 
+	get_top_posts(): void{
+		this.postService.get_top_posts().then(top_posts => this.top_posts = top_posts);
+	}
 
 }
