@@ -11,6 +11,8 @@ import {MainComponent} from "./main.component";
 import {MypageComponent} from "./mypage.component";
 import {RecommendComponent} from "./recommend.component";
 import {UserService} from "./model/user.service";
+import {PostService} from "./post.service";
+import {RatingService} from "./rating.service";
 
 // For Testing
 import { APP_BASE_HREF } from "@angular/common";
@@ -31,6 +33,8 @@ import { APP_BASE_HREF } from "@angular/common";
   ],
   providers: [
     UserService,
+    PostService,
+    RatingService,
     {provide: APP_BASE_HREF, useValue : '/'},
     { provide: XSRFStrategy, useFactory: cookieStrategy},
   ],

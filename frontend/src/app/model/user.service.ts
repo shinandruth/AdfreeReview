@@ -6,12 +6,15 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import {User} from "./user";
+
 
 @Injectable()
 export class UserService {
   private signinUrl = '/api/signin';
   private signupUrl = '/api/signup';
   private signoutUrl = '/api/signout';
+  private userUrl = '/api/user';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -49,6 +52,31 @@ export class UserService {
   signout() : Observable<Response> {
     return this.http
       .get(this.signoutUrl)
+      .map((response: Response) => {
+        return response;
+      })
+      .catch(err => {
+        return Observable.throw(err.status);
+      });
+  }
+
+  getMyInfo() : Observable<User> {
+    return this.http
+      .get(this.userUrl)
+      .map((response: Response) => response.json())
+      .catch(err => {
+        if (err.status === 401) {
+          return Observable.throw('Unauthorized');
+        }
+        else {
+          return Observable.throw(err.status);
+        }
+      });
+  }
+
+  updateSetting(new_setting) : Observable<Response> {
+    return this.http
+      .put(this.userUrl, JSON.stringify({domain_list: new_setting}), {headers: this.headers})
       .map((response: Response) => {
         return response;
       })
