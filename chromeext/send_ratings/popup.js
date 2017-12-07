@@ -3,7 +3,7 @@ function create_rating(e){
   adfreescore = get_starrate(document.getElementById("adfree_starrate"));
   contentscore = get_starrate(document.getElementById("content_starrate"));
   comment = document.getElementById("Comment").value;
-  base_url = "http://localhost:8000/api/rating"
+  base_url = "http://13.125.18.17:8000/api/rating"
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(e){
     if(xhr.readyState == 4){
@@ -42,13 +42,13 @@ function get_starrate(star_class){
 
 function sign_up(e) {
   chrome.tabs.create({
-    url: "http://localhost:4200/welcome"
+    url: "http://13.125.18.17:4200/welcome"
   });
 }
 
 function sign_in(e) {
   chrome.tabs.create({
-    url: "http://localhost:4200/welcome"
+    url: "http://13.125.18.17:4200/welcome"
   });
 }
 
@@ -72,7 +72,7 @@ function get_post_score(){
   }, function(tabs) {
     url = tabs[0].url;
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8000/api/score/" + url, false);
+    xhr.open("GET", "http://13.125.18.17:8000/api/score/" + url, false);
     var scores;
     xhr.onload = function() {
       if (xhr.readyState == 4 && xhr.status == "200") {
