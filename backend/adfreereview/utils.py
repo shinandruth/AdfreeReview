@@ -68,6 +68,8 @@ def check_blog_url(url):
 def check_rating_validity(req_data):
     for component, match in rating_infos.items():
         if not match.match(req_data[component]):
+            if component == 'comment' and req_data[component] == '':
+                continue
             return (False, component)
     return (True, None)
 
