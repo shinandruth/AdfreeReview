@@ -91,8 +91,26 @@ def current_user(request):
 def my_ratings(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
+            '''
             return JsonResponse(
                 list(Rating.objects.filter(user=request.user).order_by('-time_stamp').values()), safe=False)
+            '''
+            rating_list = list(Rating.objects.filter(user=request.user).order_by('-time_stamp').values())
+            informative_rating_list = list()
+            for rating in rating_list:
+                informative_rating = dict()
+                informative_rating['post_id'] = rating['post_id']
+                informative_rating['time_stamp'] = rating['time_stamp']
+                informative_rating['adfree_score'] = rating['adfree_score']
+                informative_rating['content_score'] = rating['content_score']
+                informative_rating['comment'] = rating['comment']
+                # make rating informative with post info
+                post_id = int(rating['post_id'])
+                rated_post = model_to_dict(Post.objects.get(id=post_id))
+                informative_rating['post_title'] = rated_post['title']
+                informative_rating['post_url'] = rated_post['url']
+                informative_rating_list.append(informative_rating)
+            return JsonResponse(informative_rating_list, safe=False)
         else:
             return HttpResponse(status=401)
     else:
@@ -109,7 +127,6 @@ def latest_posts(request):
 def top_posts(request):
     if request.method == 'GET':
         return JsonResponse(list(Post.objects.order_by('total_score').reverse().values()), safe=False)
-
 
 
 # Get top post list consists of posts in selected category
@@ -142,6 +159,7 @@ def create_rating(request):
         return HttpResponse(status=200)
     else:
         return HttpResponseNotAllowed(['POST'])
+
 
 def get_scores(request, url):
     if request.method == 'GET':

@@ -93,4 +93,13 @@ export class MypageComponent implements OnInit {
         console.log("hello!");
       });
   }
+
+  toggleComment(rating) {
+    if (rating.show_comment) {
+      rating.show_comment = false;
+    }
+    else {
+      rating.show_comment = true;
+    }
+  }
 }
