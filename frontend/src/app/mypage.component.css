@@ -4,9 +4,17 @@ img {
   margin: 20px;
 }
 
-button {
+.save_setting_button {
   margin-top: 20px;
   width: 260px;
+}
+
+.round_button {
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -2px;
 }
 
 .footer {
@@ -49,7 +57,13 @@ button {
   margin: 5px;
 }
 
+.cell-rating-title {
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
+
 .cell-rating {
+  word-wrap: break-word;
   margin: 5px 0px 5px 0px;
   text-align: center;
 }
