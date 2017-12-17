@@ -16,75 +16,71 @@
 </head>
 
 <body>
-  <div class='container'>
-    <form id="score">
-      <h5 class='adReview'>
-        AdfreeScore
-        <br />
-      <b><span id="post_adfreescore"></span></b> (by <span class="totalRating" id="numadfreerating"></span>)
-    </h5>
-    </form>
+  <div class='adReview1'>
+    <h5 class='moveRight'>AdfreeScore</h5>
+    <div class="boxed">
+      <span id="post_adfreescore"></span> (by <span class="totalRating" id="numadfreerating"></span>)
+    </div>
   </div>
+
   <div>
-    <h5 class='contentReview1'>
-        ContentScore
-        <br />
-        <span id="post_contentscore"></span> (by <span id="numcontentrating"></span>)
-        <br />
-      </h5>
-    </form>
-  </div>
+    <div class='contentReview1'>
+      <h5 class='moveRight'>ContentScore</h5>
+      <div class="boxed" <span id="post_contentscore">
+        </span> (by <span id="numcontentrating"></span>)
+      </div>
+    </div>
 
 
-  <div class='container'>
-    <form class="adReview">
-      <fieldset class="starability-basic" id="adfree_starrate">
-        <h5>Adfree Rating</h5>
-        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
-        <input type="radio" id="rate1" name="rating" value="1" />
-        <label for="rate1">1 star.</label>
-        <input type="radio" id="rate2" name="rating" value="2" />
-        <label for="rate2">2 stars.</label>
-        <input type="radio" id="rate3" name="rating" value="3" />
-        <label for="rate3">3 stars.</label>
-        <input type="radio" id="rate4" name="rating" value="4" />
-        <label for="rate4">4 stars.</label>
-        <input type="radio" id="rate5" name="rating" value="5" />
-        <label for="rate5">5 stars.</label>
-      </fieldset>
-    </form>
+    <div class='container'>
+      <form class="adReview2">
+        <fieldset class="starability-basic" id="adfree_starrate">
+          <h5>Adfree Rating</h5>
+          <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+          <input type="radio" id="rate1" name="rating" value="1" />
+          <label for="rate1">1 star.</label>
+          <input type="radio" id="rate2" name="rating" value="2" />
+          <label for="rate2">2 stars.</label>
+          <input type="radio" id="rate3" name="rating" value="3" />
+          <label for="rate3">3 stars.</label>
+          <input type="radio" id="rate4" name="rating" value="4" />
+          <label for="rate4">4 stars.</label>
+          <input type="radio" id="rate5" name="rating" value="5" />
+          <label for="rate5">5 stars.</label>
+        </fieldset>
+      </form>
 
-    <form class="contentReview2">
-      <fieldset class="starability-basic" id="content_starrate">
-        <h5>Content Rating</h5>
-        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
-        <input type="radio" id="slot-rate1" name="rating" value="1" />
-        <label for="slot-rate1">1 star.</label>
-        <input type="radio" id="slot-rate2" name="rating" value="2" />
-        <label for="slot-rate2">2 stars.</label>
-        <input type="radio" id="slot-rate3" name="rating" value="3" />
-        <label for="slot-rate3">3 stars.</label>
-        <input type="radio" id="slot-rate4" name="rating" value="4" />
-        <label for="slot-rate4">4 stars.</label>
-        <input type="radio" id="slot-rate5" name="rating" value="5" />
-        <label for="slot-rate5">5 stars.</label>
-        <span class="starability-focus-ring"></span>
-      </fieldset>
-    </form>
+      <form class="contentReview2">
+        <fieldset class="starability-basic" id="content_starrate">
+          <h5>Content Rating</h5>
+          <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+          <input type="radio" id="slot-rate1" name="rating" value="1" />
+          <label for="slot-rate1">1 star.</label>
+          <input type="radio" id="slot-rate2" name="rating" value="2" />
+          <label for="slot-rate2">2 stars.</label>
+          <input type="radio" id="slot-rate3" name="rating" value="3" />
+          <label for="slot-rate3">3 stars.</label>
+          <input type="radio" id="slot-rate4" name="rating" value="4" />
+          <label for="slot-rate4">4 stars.</label>
+          <input type="radio" id="slot-rate5" name="rating" value="5" />
+          <label for="slot-rate5">5 stars.</label>
+          <span class="starability-focus-ring"></span>
+        </fieldset>
+      </form>
 
-    <form>
-      <textarea style="overflow:hidden" rows="3" cols="45" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
-    </form>
-    <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
-  </div>
-  <br />
-  <div class="wrapper">
-    <button id="sign_in" type="button" class="btn btn-default navbar-btn">Sign in</button>
-    <button id="sign_up" type="button" class="btn btn-default navbar-btn">Sign Up</button>
-  </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <form>
+        <textarea style="overflow:hidden" rows="3" cols="45" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
+      </form>
+      <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
+    </div>
+    <br />
+    <div class="wrapper">
+      <button id="sign_in" type="button" class="btn btn-default navbar-btn">Sign in</button>
+      <button id="sign_up" type="button" class="btn btn-default navbar-btn">Sign Up</button>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   -->

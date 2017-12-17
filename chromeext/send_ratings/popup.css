@@ -21,13 +21,17 @@ button:hover {
   cursor: pointer;
 }
 
-.adReview {
+.adReview1 {
   float:left;
+  padding-left: 0.5cm;
 }
 
+.adReview2 {
+  float:left;
+}
 .contentReview1 {
   float: right;
-  padding-right: 1cm;
+  padding-right: 0.5cm;
 }
 
 .contentReview2 {
@@ -36,4 +40,16 @@ button:hover {
 
 .totalRating {
   font-size: : 5%;
+}
+
+.moveRight {
+  padding-left: 0.5cm;
+}
+.boxed{
+  width: 150px;
+  padding: 1px;
+  border: 5px solid gray;
+  margin: 0;
+  text-align: center;
+
 }
