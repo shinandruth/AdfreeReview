@@ -8,37 +8,41 @@
             <h3>My Ratings</h3>
           </div>
           <div class="row border rounded rating">
-            <div class="col-md-1 cell-rating">
+            <div class="col-md-6 cell-rating-title">
               POST
             </div>
-            <div class="col-md-3 cell-rating">
-              DATE
-            </div>
-            <div class="col-md-2 cell-rating">
+            <div class="col-md-2 cell-rating-title">
               ADFREE
             </div>
-            <div class="col-md-2 cell-rating">
-              CONTENT
+            <div class="col-md-2 cell-rating-title">
+              INFO
             </div>
-            <div class="col-md-4 cell-rating">
-              COMMENT
+            <div class="col-md-2 cell-rating-title">
+
             </div>
           </div>
-          <div *ngFor="let rating of my_ratings" class="row border rounded rating">
-            <div class="col-md-1 cell-rating">
-              {{rating.post_id}}
+          <div *ngFor="let rating of my_ratings">
+            <div class="row border rounded rating">
+              <div class="col-md-6 cell-rating">
+                <a target="_blank" href="{{rating.post_url}}">{{rating.post_title}}</a>
+              </div>
+              <div class="col-md-2 cell-rating">
+                {{rating.adfree_score}}
+              </div>
+              <div class="col-md-2 cell-rating">
+                {{rating.content_score}}
+              </div>
+              <div class="col-md-2 cell-rating-title">
+                <button type="button" class="btn-sm btn-outline-primary round_button" (click)="toggleComment(rating)"></button>
+              </div>
             </div>
-            <div class="col-md-3 cell-rating">
-              {{rating.time_stamp.slice(0, 10)}}
-            </div>
-            <div class="col-md-2 cell-rating">
-              {{rating.adfree_score}}
-            </div>
-            <div class="col-md-2 cell-rating">
-              {{rating.content_score}}
-            </div>
-            <div class="col-md-4 cell-rating">
-              {{rating.comment}}
+            <div *ngIf="rating.show_comment" class="row rounded rating">
+              <div class="col-md-9 cell-rating">
+                {{rating.comment}}
+              </div>
+              <div class="col-md-3 cell-rating">
+                {{rating.time_stamp.slice(0, 10)}}
+              </div>
             </div>
           </div>
         </div>
@@ -81,12 +85,15 @@
           </div>
         </div>
         <div class="row info">
-          <button type="button" class="btn btn-primary" (click)="updateSetting()">Save Setting</button>
+          <button type="button" class="btn btn-primary save_setting_button" (click)="updateSetting()">Save Setting</button>
         </div>
       </div>
     </div>
   </div>
-  <footer class="border border-bottom-0">
-    ADFREE REVIEW by TEAM 12
+  <footer class="footer">
+    <p>&copy; SWPP team12</p>
+    <p>User profile icon made by
+      <a href="https://www.flaticon.com/">www.flaticon.com</a>
+    </p>
   </footer>
 </div>

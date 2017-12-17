@@ -1,9 +1,11 @@
-<h1>{{title}}</h1>
-<div>
-  <button (click)="router.navigate(['/main'])">Home</button>
-  <button (click)="router.navigate(['/recommend'])">Recommended</button>
-  <button (click)="router.navigate(['/mypage'])">My Page</button>
-  <button (click)="router.navigate(['/welcome'])">Log In or Join</button>
-  <button (click)="signout()">Log Out</button>
+<div class="container">
+  <h1>{{title}}</h1>
+  <div>
+    <button type=button class="btn-lg btn-outline-secondary" (click)="router.navigate(['/main'])">Home</button>
+    <button type=button class="btn-lg btn-outline-secondary" (click)="router.navigate(['/recommend'])">Recommended</button>
+    <button type=button class="btn-lg btn-outline-secondary" (click)="router.navigate(['/mypage'])">My Page</button>
+    <button type=button class="btn-lg btn-outline-secondary" (click)="router.navigate(['/welcome'])">Log In or Join</button>
+    <button type=button class="btn-lg btn-outline-warning" (click)="signout()">Log Out</button>
+  </div>
 </div>
 <router-outlet></router-outlet>
