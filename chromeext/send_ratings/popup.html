@@ -26,54 +26,44 @@
   </div>
   <div class='container'>
     <h4><strong>[Rating this post!]</strong></h4>
-    <form>
-      <fieldset class="starability-basic" id="adfree_starrate">
-        <h5>Adfree Rating</h5>
-        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
 
+    <form class="adReview">
+      <fieldset class="starability-basic" id="adfree_starrate">
+        <h6>Adfree Rating</h6>
+        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
         <input type="radio" id="rate1" name="rating" value="1" />
         <label for="rate1">1 star.</label>
-
         <input type="radio" id="rate2" name="rating" value="2" />
         <label for="rate2">2 stars.</label>
-
         <input type="radio" id="rate3" name="rating" value="3" />
         <label for="rate3">3 stars.</label>
-
         <input type="radio" id="rate4" name="rating" value="4" />
         <label for="rate4">4 stars.</label>
-
         <input type="radio" id="rate5" name="rating" value="5" />
         <label for="rate5">5 stars.</label>
       </fieldset>
     </form>
 
-    <form>
+    <form class="contentReview">
       <fieldset class="starability-basic" id="content_starrate">
-        <h7>Content Rating</h7>
+        <h6>Content Rating</h6>
         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
-
         <input type="radio" id="slot-rate1" name="rating" value="1" />
         <label for="slot-rate1">1 star.</label>
-
         <input type="radio" id="slot-rate2" name="rating" value="2" />
         <label for="slot-rate2">2 stars.</label>
-
         <input type="radio" id="slot-rate3" name="rating" value="3" />
         <label for="slot-rate3">3 stars.</label>
-
         <input type="radio" id="slot-rate4" name="rating" value="4" />
         <label for="slot-rate4">4 stars.</label>
-
         <input type="radio" id="slot-rate5" name="rating" value="5" />
         <label for="slot-rate5">5 stars.</label>
-
         <span class="starability-focus-ring"></span>
       </fieldset>
     </form>
 
     <form>
-      <textarea rows="4" cols="50" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
+      <textarea style="overflow:hidden" rows="3" cols="50" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
     </form>
     <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
   </div>

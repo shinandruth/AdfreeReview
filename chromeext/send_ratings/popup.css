@@ -20,3 +20,11 @@ button:hover {
   background-color: #ff3300;
   cursor: pointer;
 }
+
+.adReview {
+  float:left;
+}
+
+.contentReview {
+  float: right;
+}
