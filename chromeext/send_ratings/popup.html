@@ -5,7 +5,7 @@
   <title>AdfreeReview</title>
   <script src="popup.js"></script>
   <link rel="stylesheet" href="popup.css">
-  <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css"/>
+  <link rel="stylesheet" type="text/css" href="starability-minified/starability-all.min.css" />
 
   <!-- django star implementation -->
   <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
@@ -17,16 +17,22 @@
 </head>
 
 <body>
+
   <div class='container'>
     <form id="score">
-      <h4><strong>[Score of this post]</strong></h4>
-      <small>AdfreeScore: <span id="post_adfreescore"></span>(by <span id="numadfreerating"></span>)<br></small>
-      <small>ContentScore: <span id="post_contentscore"></span>(by <span id="numcontentrating"></span>)<br></small>
+      <h6 class=adReview>
+        AdfreeScore:
+      <span id="post_adfreescore"></span> from <span id="numadfreerating"></span> ratings
+    </h6>
+      <h6 class=contentReview>
+        ContentScore:
+        <span id="post_contentscore"></span> from <span id="numcontentrating"></span> ratings
+      </h6>
     </form>
   </div>
-  <div class='container'>
-    <h4><strong>[Rating this post!]</strong></h4>
 
+
+  <div class='container'>
     <form class="adReview">
       <fieldset class="starability-basic" id="adfree_starrate">
         <h6>Adfree Rating</h6>
@@ -67,6 +73,7 @@
     </form>
     <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
   </div>
+  <br />
   <div class="wrapper">
     <button id="sign_in" type="button" class="btn btn-default navbar-btn">Sign in</button>
     <button id="sign_up" type="button" class="btn btn-default navbar-btn">Sign Up</button>
