@@ -28,6 +28,7 @@ button:hover {
 
 .adReview2 {
   float:left;
+  padding-left: 0.25cm;
 }
 .contentReview1 {
   float: right;
@@ -36,6 +37,7 @@ button:hover {
 
 .contentReview2 {
   float: right;
+  padding-left: 0.25cm;
 }
 
 .totalRating {
@@ -43,13 +45,18 @@ button:hover {
 }
 
 .moveRight {
-  padding-left: 0.5cm;
+  padding-left: 0.25cm;
 }
+
+.moveRightHalf {
+  padding-left: 0.125cm;
+  padding-top: 0.5cm;
+}
+
 .boxed{
   width: 150px;
   padding: 1px;
-  border: 5px solid gray;
+  border: 5px solid red;
   margin: 0;
   text-align: center;
-
 }
