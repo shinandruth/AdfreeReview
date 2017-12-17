@@ -17,25 +17,23 @@
 
 <body>
   <div class='adReview1'>
-    <h5 class='moveRight'>AdfreeScore</h5>
+    <h5 class='moveRight'>Adfree Score</h5>
     <div class="boxed">
-      <span id="post_adfreescore"></span> (by <span class="totalRating" id="numadfreerating"></span>)
+      <b><span id="post_adfreescore"></span></b> (by <span id="numadfreerating"></span>)
     </div>
   </div>
 
-  <div>
     <div class='contentReview1'>
-      <h5 class='moveRight'>ContentScore</h5>
-      <div class="boxed" <span id="post_contentscore">
-        </span> (by <span id="numcontentrating"></span>)
+      <h5 class='moveRight'>Content Score</h5>
+      <div class="boxed">
+        <b><span id="post_contentscore"> </span></b> (by <span id="numcontentrating"></span>)
       </div>
     </div>
-
 
     <div class='container'>
       <form class="adReview2">
         <fieldset class="starability-basic" id="adfree_starrate">
-          <h5>Adfree Rating</h5>
+          <h5 class='moveRightHalf'>Adfree Rating</h5>
           <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
           <input type="radio" id="rate1" name="rating" value="1" />
           <label for="rate1">1 star.</label>
@@ -52,7 +50,7 @@
 
       <form class="contentReview2">
         <fieldset class="starability-basic" id="content_starrate">
-          <h5>Content Rating</h5>
+          <h5 class='moveRightHalf'>Content Rating</h5>
           <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
           <input type="radio" id="slot-rate1" name="rating" value="1" />
           <label for="slot-rate1">1 star.</label>
@@ -74,6 +72,7 @@
       <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
     </div>
     <br />
+
     <div class="wrapper">
       <button id="sign_in" type="button" class="btn btn-default navbar-btn">Sign in</button>
       <button id="sign_up" type="button" class="btn btn-default navbar-btn">Sign Up</button>
