@@ -1,5 +1,5 @@
 body {
-  width: 400px;
+  width: 375px;
   height: 300px;
 }
 
@@ -25,6 +25,15 @@ button:hover {
   float:left;
 }
 
-.contentReview {
+.contentReview1 {
   float: right;
+  padding-right: 1cm;
+}
+
+.contentReview2 {
+  float: right;
+}
+
+.totalRating {
+  font-size: : 5%;
 }
