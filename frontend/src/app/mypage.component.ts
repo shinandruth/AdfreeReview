@@ -42,7 +42,6 @@ export class MypageComponent implements OnInit {
           this.setting
             .push(prev_setting.includes(this.domains[i]));
         }
-        this.selectProfile(this.my_info.score);
       }, (err) => {
         if (err === 'Unauthorized') {
           alert("Please login to access My Page!");
@@ -73,11 +72,11 @@ export class MypageComponent implements OnInit {
     console.log(new_setting.split(','));
   }
 
-  selectProfile(score) {
-    if (score < 100) {
+  selectProfile(count) {
+    if (count < 3) {
       this.profile = "assets/images/heart-1.png"
     }
-    else if (score >= 100 && score < 200) {
+    else if (count >= 3 && count < 10) {
       this.profile = "assets/images/heart-2.png"
     }
     else {
@@ -90,7 +89,7 @@ export class MypageComponent implements OnInit {
       .getMyRatings()
       .then(my_ratings => {
         this.my_ratings = my_ratings;
-        console.log("hello!");
+        this.selectProfile(my_ratings.length);
       });
   }
 
