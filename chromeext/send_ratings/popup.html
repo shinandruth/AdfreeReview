@@ -13,25 +13,23 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
 </head>
 
 <body>
-
   <div class='container'>
     <form id="score">
       <h5 class='adReview'>
         AdfreeScore
         <br />
-      <span id="post_adfreescore"></span> (<span id="numadfreerating"></span> ratings)
+      <b><span id="post_adfreescore"></span></b> (by <span class="totalRating" id="numadfreerating"></span>)
     </h5>
     </form>
   </div>
   <div>
-    <h5 class='contentReview'>
+    <h5 class='contentReview1'>
         ContentScore
         <br />
-        <span id="post_contentscore"></span> (<span id="numcontentrating"></span> ratings)
+        <span id="post_contentscore"></span> (by <span id="numcontentrating"></span>)
         <br />
       </h5>
     </form>
@@ -41,7 +39,7 @@
   <div class='container'>
     <form class="adReview">
       <fieldset class="starability-basic" id="adfree_starrate">
-        <h6>Adfree Rating</h6>
+        <h5>Adfree Rating</h5>
         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
         <input type="radio" id="rate1" name="rating" value="1" />
         <label for="rate1">1 star.</label>
@@ -56,9 +54,9 @@
       </fieldset>
     </form>
 
-    <form class="contentReview">
+    <form class="contentReview2">
       <fieldset class="starability-basic" id="content_starrate">
-        <h6>Content Rating</h6>
+        <h5>Content Rating</h5>
         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
         <input type="radio" id="slot-rate1" name="rating" value="1" />
         <label for="slot-rate1">1 star.</label>
@@ -75,7 +73,7 @@
     </form>
 
     <form>
-      <textarea style="overflow:hidden" rows="3" cols="49" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
+      <textarea style="overflow:hidden" rows="3" cols="45" name="Comment" id="Comment" form="usrform" placeholder="Type your comment here"></textarea>
     </form>
     <input type="submit" id="SubmitButton" class="btn btn-primary btn-block" />
   </div>
