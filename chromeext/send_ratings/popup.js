@@ -14,6 +14,7 @@ function create_rating(e){
       }
     }
   };
+  category = document.getElementsByName("post_category")[0].value
   chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT}, function (tabs) {
     url = tabs[0].url;
     xhr.open("POST", base_url, true); // FIXME localhost
@@ -22,6 +23,7 @@ function create_rating(e){
       adfreescore: adfreescore,
       contentscore: contentscore,
       comment: comment,
+      category: category,
       url: url
     });
     xhr.send(json_rating);
