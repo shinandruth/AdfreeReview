@@ -44,7 +44,7 @@ class CustomBlog(admin.ModelAdmin):
 
 
 class CustomRating(admin.ModelAdmin):
-    list_display = ('user', 'post', 'time_stamp', 'adfree_score', 'content_score', 'comment')
+    list_display = ('user', 'post', 'time_stamp', 'adfree_score', 'content_score', 'comment', 'category')
 
 
 class CustomPost(admin.ModelAdmin):
