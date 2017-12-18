@@ -101,4 +101,25 @@ export class MypageComponent implements OnInit {
       rating.show_comment = true;
     }
   }
+
+  isWantedDomain(rating) {
+    let url = rating.post_url;
+    let domain_index;
+    if (url.includes('naver')) {
+      domain_index = 0;
+    }
+    else if (url.includes('daum')){
+      domain_index = 1;
+    }
+    else if (url.includes('egloos')){
+      domain_index = 2;
+    }
+    else if (url.includes('tistory')){
+      domain_index = 3;
+    }
+    else {
+      return false;
+    }
+    return this.setting[domain_index];
+  }
 }
