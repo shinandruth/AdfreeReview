@@ -180,6 +180,7 @@ def create_rating(request):
         category = req_data['category']
         post_title = get_post_title(url, domain)
         blog, created = Blog.objects.get_or_create(domain=domain, title=title, url=blog_url)
+        url = url.split('?')[0]
         post, created = Post.objects.get_or_create(blog=blog, title=post_title, url=url)  # FIXME get title and category
         user = User.objects.get(username=request.user.username)
         rating = Rating(user=user, post=post, adfree_score=adfreescore, content_score=contentscore, comment=comment, category=category)
