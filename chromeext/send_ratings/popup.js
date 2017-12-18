@@ -26,7 +26,7 @@ function create_rating(e){
     });
     xhr.send(json_rating);
   });
-  //window.close();
+  window.close();
 }
 
 function get_starrate(star_class){
