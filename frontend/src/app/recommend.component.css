@@ -4,3 +4,77 @@
   margin-top: 40px;
   border-top: 1px solid #eee;
 }
+
+#page {
+  overflow: hidden;
+  width: 1120px;
+  margin: 0px auto;
+  padding: 50px 40px;
+  color: #8F8F8F;
+}
+
+#wide-content {
+  padding: 30px;
+  border: 10px solid #f1f1f1;
+}
+
+#wide-content h2 {
+  padding: 0px 0px 20px 0px;
+  letter-spacing: -1px;
+  font-size: 36px;
+  color: #222222;
+}
+
+/* List Style 1 */
+
+ul.style1 {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul.style1 li {
+  padding: 25px 0px 25px 0px;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+ul.style1 a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+ul.style1 a:hover {
+  text-decoration: underline;
+  color: #6B6B6B;
+}
+
+ul.style1 .first {
+  padding-top: 0px;
+  border-top: none;
+}
+
+ul.style1 h3
+{
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ul.style1 .button-style a:hover
+{
+  text-decoration: none !important;
+  color: #FFF !important;
+}
+
+img.alignleft {
+  float: left;
+  margin-top: 8px;
+  margin-right: 50px;
+  margin-bottom: 70px;
+}
+
+#alignright {
+  float: right;
+  margin-top: 40px;
+  margin-right: 50px;
+}
