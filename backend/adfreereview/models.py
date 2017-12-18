@@ -62,3 +62,4 @@ class Rating(models.Model):
     adfree_score = models.DecimalField(max_digits=5, decimal_places=2)
     content_score = models.DecimalField(max_digits=5, decimal_places=2)
     comment = models.CharField(max_length=500)
+    category = models.CharField(max_length=128, default="etc")
