@@ -1,5 +1,7 @@
 import re
 from urllib.parse import urlparse
+from .models import Rating
+import numpy as np
 
 
 ############################################ URL urils ############################################
@@ -102,3 +104,28 @@ def update_scores(rating):
     post.total_score = new_total_score
     post.rating_count = new_rating_count
     post.save()
+
+def update_category(post):
+    ratings = Rating.objects.filter(post=post)
+    categories = {
+        'etc': 0,
+        'Beauty': 0,
+        'Food': 0,
+        'IT': 0,
+        'Fashion': 0
+    }
+    most_frequent = 'etc'
+    if len(ratings) == 0:
+        pass
+    else:
+        for rating in ratings:
+            categories[rating.category] += 1
+        max_num = -1
+        for category, num in categories.items():
+            if num >= max_num:
+                max_num = num
+                most_frequent = category
+    post.category = most_frequent
+    post.save()
+
+
