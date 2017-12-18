@@ -193,6 +193,8 @@ def create_rating(request):
 
 def get_scores(request, url):
     if request.method == 'GET':
+        if url[:5] == "https":
+            url = "http" + url[5:]
         domain = check_domain(url)
         title = check_title(url)
         blog_url = check_blog_url(url)
