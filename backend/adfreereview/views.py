@@ -165,6 +165,8 @@ def recommend_posts(request, category_id):
 def create_rating(request):
     if request.method == 'POST':
         req_data = json.loads(request.body.decode())
+        if req_data['url'][:5] == "https":
+            req_data['url'] = "http" + req_data['url'][5:]
         valid, component = check_rating_validity(req_data)
         if not valid:
             return HttpResponse(status=400)  # FIXME passing error
