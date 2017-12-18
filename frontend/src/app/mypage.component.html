@@ -22,26 +22,28 @@
             </div>
           </div>
           <div *ngFor="let rating of my_ratings">
-            <div class="row border rounded rating">
-              <div class="col-md-6 cell-rating">
-                <a target="_blank" href="{{rating.post_url}}">{{rating.post_title}}</a>
+            <div *ngIf="isWantedDomain(rating)">
+              <div class="row border rounded rating">
+                <div class="col-md-6 cell-rating">
+                  <a target="_blank" href="{{rating.post_url}}">{{rating.post_title}}</a>
+                </div>
+                <div class="col-md-2 cell-rating">
+                  {{rating.adfree_score}}
+                </div>
+                <div class="col-md-2 cell-rating">
+                  {{rating.content_score}}
+                </div>
+                <div class="col-md-2 cell-rating-title">
+                  <button type="button" class="btn-sm btn-outline-primary round_button" (click)="toggleComment(rating)"></button>
+                </div>
               </div>
-              <div class="col-md-2 cell-rating">
-                {{rating.adfree_score}}
-              </div>
-              <div class="col-md-2 cell-rating">
-                {{rating.content_score}}
-              </div>
-              <div class="col-md-2 cell-rating-title">
-                <button type="button" class="btn-sm btn-outline-primary round_button" (click)="toggleComment(rating)"></button>
-              </div>
-            </div>
-            <div *ngIf="rating.show_comment" class="row rounded rating">
-              <div class="col-md-9 cell-rating">
-                {{rating.comment}}
-              </div>
-              <div class="col-md-3 cell-rating">
-                {{rating.time_stamp.slice(0, 10)}}
+              <div *ngIf="rating.show_comment" class="row rounded rating">
+                <div class="col-md-9 cell-rating">
+                  {{rating.comment}}
+                </div>
+                <div class="col-md-3 cell-rating">
+                  {{rating.time_stamp.slice(0, 10)}}
+                </div>
               </div>
             </div>
           </div>
@@ -64,7 +66,7 @@
       </div>
       <div class="row border rounded right-panel panel setting">
         <div class="row info">
-          <h3>Settings</h3>
+          <h3>Filter</h3>
         </div>
         <div class="row rounded right-panel info">
           <div class="col-md-4">
