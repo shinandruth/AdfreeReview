@@ -96,6 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("SubmitButton").addEventListener('click', create_rating);
   document.getElementById("sign_up").addEventListener('click', sign_up);
   document.getElementById("sign_in").addEventListener('click', sign_in);
-  document.getElementById("rate1").addEventListener('click', duplicate_current_tab);
+  //document.getElementById("rate1").addEventListener('click', duplicate_current_tab);
   get_post_score()
 });
