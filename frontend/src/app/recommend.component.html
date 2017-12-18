@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>recommended blog page</h2>
   <div>
     <form name = "form">
       <select class="form-control" id="selectCategory" name="selectCategory" (change)="onSelect()">
@@ -15,18 +14,27 @@
 
   <br><br>
   <h1>Recommended Posts</h1>
-  <div class="row">
-    <div class="col-lg-4"
-         *ngFor="let post of posts">
-      <h2>{{post.id}}. {{post.title}}</h2>
-      <span class="text-muted">adfree score : {{post.adfree_score}}</span> <br>
-      <span class="text-muted">content score : {{post.content_score}}</span><br>
-      <span class="text-muted">total score : {{post.total_score}}</span><br>
-      <p><a class="btn btn-primary" href={{post.url}} role="button">Goto post &raquo;</a></p>
+  <div id="page" class="container">
+    <div id="wide-content">
+      <ul class="style1">
+        <li *ngFor="let post of posts">
+
+          <img src="assets/images/heart-1.png" alt="" width="50" height="50" class="alignleft" />
+          <p><a class="btn btn-primary" href={{post.url}} role="button" id="alignright">Goto post &raquo;</a></p>
+          <h3>{{post.title}}</h3>
+          <span class="text-muted">adfree score : {{post.adfree_score}}</span> <br>
+          <span class="text-muted">content score : {{post.content_score}}</span><br>
+          <span class="text-muted">total score : {{post.total_score}}</span><br>
+        </li>
+      </ul>
     </div>
   </div>
+
   <!-- Site footer -->
   <footer class="footer">
     <p>&copy; SWPP team12</p>
+    <p>User profile icon made by
+      <a href="https://www.flaticon.com/">www.flaticon.com</a>
+    </p>
   </footer>
 </div>

@@ -2,6 +2,8 @@ import re
 from urllib.parse import urlparse
 from .models import Rating
 import numpy as np
+from bs4 import BeautifulSoup as bs
+import requests
 
 
 ############################################ URL urils ############################################
@@ -22,7 +24,7 @@ rating_infos = {
     # string include `~!@#$%^&*()-=_+][{}:"'>,>.?/
     'comment':  re.compile('^[ \w~`!@#$%^&*\(\)-=_+\[\]\\\|\"\'\:\.\,><?\/]+$'),
     # url starting with http
-    'url': re.compile('^http://[\w ./]+$')
+    'url': re.compile('^http://[\w~`!@#$%^&*\(\)-=_+\[\]\\\|\"\'\:\.\,><?\/]+$')
 }
 
 
@@ -129,3 +131,56 @@ def update_category(post):
     post.save()
 
 
+def get_post_title(url, domain):
+    def get_naver_title(url):
+        initial_html = bs(requests.get(url).text, 'html.parser')
+        if initial_html.find(id="screenFrame") is not None:
+            screenhtml = initial_html.find(id="screenFrame").get("src")
+            screen_html = bs(requests.get(screenhtml).text, 'html.parser')
+        else:
+            screen_html = initial_html
+        main_html = "http://blog.naver.com" + screen_html.find(id="mainFrame").get("src")
+        title = bs(requests.get(main_html).text, 'html.parser').find(property="og:title").get("content")
+        return title
+
+    def get_daum_title(url):
+        initial_html = bs(requests.get(url).text, 'html.parser')
+        frames = initial_html.findAll("frame")
+        for frame in frames:
+            if frame.get("name") == "BlogMain":
+                main_html = bs(requests.get("http://blog.daum.net" + frame.get("src")).text, 'html.parser')
+                break
+        title = main_html.find(property="og:title").get("content")
+        return title
+
+    def get_egloos_title(url):
+        initial_html = bs(requests.get(url).text, "html.parser")
+        title = initial_html.find(property="og:title").get("content")
+        return title
+
+    def get_tistory_title(url):
+        return "DEFAULT_TITLE"
+
+    title = ""
+    if domain == 'tistory':
+        try:
+            title = get_tistory_title(url)
+        except:
+            title = "NOTITLE"
+    elif domain == "naver":
+        try:
+            title = get_naver_title(url)
+        except:
+            title = "NOTITLE"
+    elif domain == "daum":
+        try:
+            title = get_daum_title(url)
+        except:
+            title = "NOTITLE"
+    elif domain == "egloos":
+        try:
+            title = get_egloos_title(url)
+        except:
+            title = "NOTITLE"
+
+    return title
