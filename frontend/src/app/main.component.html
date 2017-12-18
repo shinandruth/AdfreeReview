@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <div class="container">
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Adfree Review!</h1>
-        <p class="lead">AdfreeReview is a service for internet users who search internet for online reviews, which consists of a Chrome extension and a website. Users can check scores of blog reviews and rate the posts' adfree-ness and helpfulness with Chrome extension. Website curates the top adfree-ness blogs and posts based on the scores users rated and each user's preference. By showing blog review scores rated by other users on the top of the blog review, users can decide whether to consult the review or not.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+<div class="container">
+  <!-- Jumbotron -->
+  <!--<div class="jumbotron">-->
+  <div id="page_wrapper">
+    <div id="page">
+      <div id="wide-content">
+        <h2>Welcome to Adfree Review!</h2><br>
+        <p class="lead"><img src="assets/images/letter-a.png" alt="" width="180" height="180" class="alignleft" /><strong>AdfreeReview</strong> is a service for internet users who search internet for online reviews, which consists of a Chrome extension and a website. Users can check scores of blog reviews and rate the posts' adfree-ness and helpfulness with Chrome extension. Website curates the top adfree-ness blogs and posts based on the scores users rated and each user's preference. </p>
+        <p class="lead">By showing blog review scores rated by other users on the top of the blog review, users can decide whether to consult the review or not.</p>
       </div>
+    </div>
+  </div>
 
-      <!-- Example row of columns -->
-      <h1>Latest Ratings</h1>
-      <div class="row">
-        <div class="col-lg-4"
-        *ngFor="let rating of latest_ratings">
-          <h2>{{rating.id}}. post : {{rating.post_title}}</h2>
-        	 <span class="text-muted">adfree score : {{rating.adfree_score}}</span><br>
-              <span class="text-muted">content score : {{rating.content_score}}</span><br>
-              <span class="text-muted">comment : {{rating.comment}}</span><br>
+  <!-- Example row of columns -->
+  <h1>Latest Ratings</h1>
+  <div class="container">
+    <div class="row" id="page">
+      <div class="col-lg-4" id="content"
+      *ngFor="let rating of latest_ratings">
+      <img src="assets/images/heart-1.png" alt="" width="50" height="50" class="aligncenter" />
+      <h2>{{rating.post_title}}</h2>
+      <span class="text-muted" id="aligncenter">adfree score : {{rating.adfree_score}}</span><br>
+      <span class="text-muted">content score : {{rating.content_score}}</span><br>
+      <span class="text-muted">comment : {{rating.comment}}</span><br>
+              <!--
               <span class="text-muted">time stamp : {{rating.time_stamp}}</span><br>
 
               user id : {{rating.user_id}}
-
+            -->
+          </div>
         </div>
       </div>
 
-	<br><br>
+      <br><br>
 
-	<h1>Top Posts</h1>
-      <div class="row">
-        <div class="col-lg-4"
-        *ngFor="let post of top_posts">
-          <h2>{{post.id}}. {{post.title}}</h2>
-	     <span class="text-muted">adfree score : {{post.adfree_score}}</span> <br>
-          <span class="text-muted">content score : {{post.content_score}}</span><br>
-          <span class="text-muted">total score : {{post.total_score}}</span><br>
-          <p><a class="btn btn-primary" href={{post.url}} role="button">Goto post &raquo;</a></p>
+      <h1>Top Posts</h1>
+      <div id="page" class="container">
+        <div id="wide-content">
+          <ul class="style1">
+            <li *ngFor="let post of top_posts">
+              <img src="assets/images/heart-1.png" alt="" width="50" height="50" class="alignleft" />
+              <p><a class="btn btn-primary" href={{post.url}} role="button" id="alignright">Goto post &raquo;</a></p>
+              <h3>{{post.title}}</h3>
+              <span class="text-muted">adfree score : {{post.adfree_score}}</span> <br>
+              <span class="text-muted">content score : {{post.content_score}}</span><br>
+              <span class="text-muted">total score : {{post.total_score}}   (by <img src="assets/images/man-user.png" alt="" width="14" height="14" class="text-muted" /> {{post.rating_count}})</span><br>
+
+            </li>
+          </ul>
         </div>
       </div>
 
       <!-- Site footer -->
       <footer class="footer">
         <p>&copy; SWPP team12</p>
+        <p>User profile icon made by
+          <a href="https://www.flaticon.com/">www.flaticon.com</a>
+        </p>
       </footer>
 
-    </div> <!-- /container -->
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    </div> 
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-</html>
+    </html>
